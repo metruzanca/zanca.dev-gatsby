@@ -1,6 +1,6 @@
 ---
 title: "Creating a Personal Website using Gatsby.js and Netlify CMS"
-date: "2020-12-20T18:48:35.562Z"
+date: "2020-12-20T20:36:56.280Z"
 description: "How I created my blog and portfolio website"
 ---
 
@@ -99,4 +99,45 @@ The last step for Netlify CMS is to add the plugin to the `gatsby-config.js` fil
 plugins: [`gatsby-plugin-netlify-cms`]
 ```
 
-With all that done, in theory Netlify CMS should be correctly configured and all that remains is to push to github and add the project to Netlify (and setup Identity).
+With all that done, in theory Netlify CMS should be correctly configured and all that remains is to push to github and add the project to Netlify.
+
+Once added Identity Service and Git Gateway needs to be enabled.
+
+## The real coding begins!
+
+Now that I've got everything working by following the guide from netlify's docs, I can get started on making my own changes.
+
+### Getting /blog/ in my posts path
+
+First and foremost, I need to get a /blog/ path before all my blog posts. If I don't it'll be messy when I add pages later and will absutely screw up SEO ranking if I change tha page's URL. So the earliest I get this done the better.
+
+To get this done I'm going to edit the `gatsby-node.js` file and within the `createPages` function where it makes a call to the `createPage` callback I need to edit the path.
+
+```diff-js
+  createPage({
++   path: `/blog/${post.fields.slug}`,
+    component: blogPost,
+    context: {
+      id: post.id,
+      previousPostId,
+      nextPostId,
+    },
+  })
+```
+
+### Adding commets
+
+Next up is adding support for comments. Theres this really nice project called [utteranc.es](https://utteranc.es/) which allows you to use GitHub issue comments for blog post comments. For anything but a developer blog, this would be inconvenient. However since this is indeed a developer blog, I feel like this is a great addition to the setup.
+
+Not only does it make it easy to handle comments but it also makes contributing to articles that much easier. Say my dream to be come a well known developer like [Dan Abramov](https://overreacted.io/) comes true and I want to allow people to contribute to my blog posts by adding translations, I think utterances will help with the whole process. Keeping the conversation around a blog post all in one place.
+
+Anyways, no clue how to setup utterances. So...
+// TODO utteranc.es
+// Ahhh todo tree. So handy.
+
+##### To be continued...
+
+// TODO talk about how I approached styling w/ styled components
+// TODO talk about how I slowly transitioned the existing js to ts and the limitations that gatsby imposes on us (e.g. pages need to be js, iirc)
+// TODO talk about how I made the projects section (no clue how I will make that section yet xD)
+// TODO Fix Mobile Responsiveness, which is something I'll likely break
