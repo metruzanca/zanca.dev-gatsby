@@ -1,6 +1,6 @@
 ---
 title: "High School CS Major to Full-Time FullStack Developer"
-date: "2029-09-30T10:30:35.562Z"
+date: "2019-09-30T10:30:35.562Z"
 description: "15 days into my first job, I look back on my journey thus far. Having majored in CS in highschool, self-teaching myself the skills necessary to land a good job in the biggest City in italy, Milan."
 ---
 
