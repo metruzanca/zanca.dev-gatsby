@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `ZBest.Dev`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Samuele Zanca`,
+      summary: `I build cool stuff, mostly with Typescript.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Personal Blog & Portfolio by Samuele Zanca`,
+    siteUrl: `https://zbest.dev/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `metruzanca`,
     },
   },
   plugins: [
@@ -60,15 +60,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `ZBest.Dev`,
+        short_name: `Zbestdev`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#353b55`,
+        theme_color: `#f7e13a`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/icon.png`,
       },
     },
+    // 'gatsby-plugin-root-import', // TODO absolute imports for components/pages
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-typescript",
     "gatsby-plugin-styled-components",
