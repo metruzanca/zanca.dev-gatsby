@@ -126,6 +126,8 @@ To get this done I'm going to edit the `gatsby-node.js` file and within the `cre
   })
 ```
 
+> For code blocks that have both language and diffing highlighting (like github does), you can do that with prism.js. (Gatsby comes with it out of the box) Instead of setting the language to e.g. js, you can use diff-js
+
 ### Adding commets
 
 Next up is adding support for comments. Theres this really nice project called [utteranc.es](https://utteranc.es/) which allows you to use GitHub issue comments for blog post comments. For anything but a developer blog, this would be inconvenient. However since this is indeed a developer blog, I feel like this is a great addition to the setup.
