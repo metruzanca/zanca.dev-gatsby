@@ -32,7 +32,8 @@ gatsby recipe typescript --install
 
 To keep things neat, just in case, I actually decided to run the commands separately and make a commit for each of them.
 
-> Don't forget to set your git identity before committing! I've got a post on that over [here](/blog/how-to-manage-your-git-identity/index.md).
+> Don't forget to set your git identity before committing! <br>
+> Coincidentally, I've got a post on that over [here](/blog/how-to-manage-your-git-identity/index.md).
 
 ```
 gatsby recipe styled-components --install
@@ -146,3 +147,5 @@ Anyways, no clue how to setup utterances. So...
 // TODO talk about how I made the projects section (no clue how I will make that section yet xD)
 
 // TODO Fix Mobile Responsiveness, which is something I'll likely break
+
+// TODO Add tags to posts
