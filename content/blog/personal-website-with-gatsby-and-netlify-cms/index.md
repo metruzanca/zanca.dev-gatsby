@@ -132,12 +132,17 @@ Next up is adding support for comments. Theres this really nice project called [
 Not only does it make it easy to handle comments but it also makes contributing to articles that much easier. Say my dream to be come a well known developer like [Dan Abramov](https://overreacted.io/) comes true and I want to allow people to contribute to my blog posts by adding translations, I think utterances will help with the whole process. Keeping the conversation around a blog post all in one place.
 
 Anyways, no clue how to setup utterances. So...
-// TODO utteranc.es
-// Ahhh todo tree. So handy.
 
 ##### To be continued...
 
+// TODO utteranc.es
+
+// Ahhh todo tree. So handy.
+
 // TODO talk about how I approached styling w/ styled components
+
 // TODO talk about how I slowly transitioned the existing js to ts and the limitations that gatsby imposes on us (e.g. pages need to be js, iirc)
+
 // TODO talk about how I made the projects section (no clue how I will make that section yet xD)
+
 // TODO Fix Mobile Responsiveness, which is something I'll likely break
