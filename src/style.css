@@ -54,9 +54,10 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
-  --color-text-light: #4f5969;
+  --color-links: #6883fd;
+  --color-links-visited: #8d77ff;
+  --color-text: #ffffff;
+  --color-text-light: #b8b8b8;
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
@@ -93,6 +94,21 @@ hr {
   border: 0;
 }
 
+/* Link */
+
+a {
+  color: var(--color-links);
+}
+
+a:visited {
+  color: var(--color-links-visited);
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
 /* Heading */
 
 h1,
@@ -120,7 +136,11 @@ h6 {
 h1 {
   font-weight: var(--fontWeight-black);
   font-size: var(--fontSize-6);
-  color: var(--color-heading-black);
+  /* color: var(--color-heading-black); */
+}
+
+h1 a:visited {
+  color: var(--color-text);
 }
 
 h2 {
@@ -201,7 +221,7 @@ blockquote {
   margin-left: calc(-1 * var(--spacing-6));
   margin-right: var(--spacing-8);
   padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
-  border-left: var(--spacing-1) solid var(--color-primary);
+  border-left: var(--spacing-1) solid var(--color-links);
   font-size: var(--fontSize-2);
   font-style: italic;
   margin-bottom: var(--spacing-8);
@@ -225,17 +245,6 @@ table {
 
 table thead tr th {
   border-bottom: 1px solid var(--color-accent);
-}
-
-/* Link */
-
-a {
-  color: var(--color-primary);
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
 }
 
 /* Custom classes */
@@ -270,7 +279,7 @@ a:focus {
 
 .post-list-item h2 {
   font-size: var(--fontSize-4);
-  color: var(--color-primary);
+  color: var(--color-links);
   margin-bottom: var(--spacing-2);
   margin-top: var(--spacing-0);
 }
@@ -330,4 +339,8 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+}
+/* TODO move to styled components */
+.highlight {
+  color: #f7e13a; /*accent*/
 }
