@@ -116,7 +116,7 @@ To get this done I'm going to edit the `gatsby-node.js` file and within the `cre
 
 ```diff-js
   createPage({
-+   path: `/blog/${post.fields.slug}`,
++   path: `/blog${post.fields.slug}`,
     component: blogPost,
     context: {
       id: post.id,
@@ -143,6 +143,10 @@ Anyways, no clue how to setup utterances. So...
 // Ahhh todo tree. So handy.
 
 // TODO talk about how I approached styling w/ styled components
+
+```
+cp .cache/default-html.js src/html.js
+```
 
 // TODO talk about how I slowly transitioned the existing js to ts and the limitations that gatsby imposes on us (e.g. pages need to be js, iirc)
 
