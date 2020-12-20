@@ -1,7 +1,7 @@
 ---
-title: Creating a Personal Website using Gatsby.js and Netlify CMS
-date: "2020-12-20T15:37:52.471Z" //TODO change this to new Date().toISOString() of publishing
-description: //TODO
+title: "Creating a Personal Website using Gatsby.js and Netlify CMS"
+date: "2020-12-20T18:48:35.562Z"
+description: "How I created my blog and portfolio website"
 ---
 
 # The Process

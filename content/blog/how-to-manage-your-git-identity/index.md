@@ -1,7 +1,7 @@
 ---
-title: How to manage your Git Identity for Work and for Personal Projects
-date: "2020-12-20T15:37:52.471Z" //TODO change this to new Date().toISOString() of publishing
-description: //TODO
+title: "How to manage your Git Identity for Work and for Personal Projects"
+date: "2020-12-20T18:48:35.562Z"
+description: "How to easily manage your GIT Identity"
 ---
 
 ## What is a GIT Identity?
