@@ -63,6 +63,27 @@
   --color-accent: #d1dce5;
 }
 
+/* Dark scrollbar */
+
+/* Firefox */
+:root {
+  scrollbar-color: #5a5e80 #1b1d2c;
+}
+
+/* Chrome */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1b1d2c;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #5a5e80;
+}
+
 /* HTML elements */
 
 *,
@@ -261,6 +282,10 @@ table thead tr th {
 
 .global-header {
   margin-bottom: var(--spacing-12);
+}
+
+.global-header > a {
+  color: var(--color-text);
 }
 
 .main-heading {
