@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: `https://zbest.dev/`,
     social: {
       twitter: `metruzanca`,
+      linkedin: `samuelz`,
     },
   },
   plugins: [
