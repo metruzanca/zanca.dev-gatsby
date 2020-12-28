@@ -11,5 +11,9 @@ tags:
   - javascript
   - html
   - css
+  - devlog
 ---
+DevLog 001
+// TODO, make devlogs a thing on the site.
+
 This is a required section....
