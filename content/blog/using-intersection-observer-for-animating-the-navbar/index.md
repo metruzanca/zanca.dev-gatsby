@@ -17,3 +17,29 @@ DevLog 001
 // TODO, make devlogs a thing on the site.
 
 This is a required section....
+
+Some HTML
+```html
+<header>
+  <!-- TODO make into logo -->
+  <span>ZBestDev</span>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>Projects</li>
+      <li>Services</li>
+      <li>About</li>
+      <li>Contact</li>
+      <li>Blog</li>
+    </ul>
+  </nav>
+  <span>
+    <ol>
+      <li>Linkedin</li>
+      <li>Github</li>
+      <li>Resume</li>
+    </ol>
+  </span>
+</header>
+```
+
