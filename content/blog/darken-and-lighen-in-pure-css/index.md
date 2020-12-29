@@ -18,9 +18,13 @@ This feature is missing from many frameworks like my favorite, Styled-Components
 
 But if you want a solution that works in all frameworks by just using Pure CSS, this is what this short post is about. 
 
-### CSS
+### Method 1
 
-If you're just looking for the css to copy and paste, heres 10% lighter and 10% darker.
+This first method has the caveat that it will change the entire element's brightness.
+
+Heres 10% lighter and 10% darker.
+
+#### CSS
 
 ```css
 .lighten {
@@ -32,11 +36,7 @@ If you're just looking for the css to copy and paste, heres 10% lighter and 10% 
 }
 ```
 
-> NB: this will change the entire element's brightness.
-
-### Styled-Components
-
-If you use something like Styled-Components, then these two helpers could come in handy to you.
+#### Styled-Components
 
 ```ts
 const lighten = (value:number) => css`
@@ -48,10 +48,7 @@ const darken = (value:number) => css`
 `
 ```
 
-#### Usage:
-
 ```ts
-// import theme from '...'
 
 const StyledButton = styled.button`
   background-color: ${theme.bg.primary};
@@ -59,3 +56,47 @@ const StyledButton = styled.button`
     ${darken(.2)}
   }
 `
+
+### Method 2
+
+This next method will only apply the darkening/lightning on the background color.
+
+Once again Heres 10% lighter and 10% darker.
+
+#### CSS
+
+```css
+.lighten {
+  background-image: linear-gradient(
+    0deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(255,255,255,0.1) 100%);
+}
+
+.darken {
+  background-image: linear-gradient(
+    0deg,
+    rgba(0,0,0,0.1) 0%,
+    rgba(0,0,0,0.1) 100%);
+}
+```
+
+#### Styled-Components
+
+```ts
+const lighten = (value:number) => css`
+  background-image: linear-gradient(
+    0deg,
+    rgba(255,255,255,${value}) 0%,
+    rgba(255,255,255,${value}) 100%);
+`
+
+const darken = (value:number) => css`
+  background-image: linear-gradient(
+    0deg,
+    rgba(0,0,0,${value}) 0%,
+    rgba(0,0,0,${value}) 100%);
+`
+```
+
+The usage is the same as the previous method for styled-components.
