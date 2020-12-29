@@ -1,7 +1,7 @@
+import React from "react"
 import styled from 'styled-components'
-// import { Link } from "gatsby"
 
-import {theme, Link, HeadingCSS} from '../../style'
+import {theme, Link, HeadingCSS, darken} from '../../style'
 
 // Logo(ZbestDev)      Nav[Home, Projects, Services, About, Contact, Blog]     Social[Linkedin, GitHub, Resume]
 
@@ -9,10 +9,14 @@ export const Nav = styled.header`
   display: inline;
   display: grid;
   grid-template-columns: 2fr 5fr 2fr;
-  height:80px;
-  background-color: rgba(0, 0, 0, .2);
+  height: 80px;
+  background-color: ${theme.bg.primary};
+  ${darken(.2)}
   //TODO make this centering MUCH better
-  padding:25px 20px;
+  padding: 25px 20px;
+  position: sticky;
+  top:0;
+  z-index:100;
 `
 
 export const NavLogo = styled.span`
@@ -45,7 +49,16 @@ export const Li = styled.li`
 
 export const NavLink = styled(Link)`
   text-decoration: none;
+  
   &:hover{
+    color: ${theme.fg.accent};
+  }
+`
+
+export const HighlightedNavLink = styled(Link)`
+  text-decoration: none;
+  color: ${theme.fg.accent};
+  &:hover, &:visited{
     color: ${theme.fg.accent};
   }
 `

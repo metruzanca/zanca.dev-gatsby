@@ -1,11 +1,41 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/SpaLayout"
 import SEO from "../components/seo"
 import Hero from "../components/Hero"
-import SpaSection from "../components/SpaSection"
+import SpaNav from "../components/Navbar"
 
+const sections = [
+  {
+    name:"Home",
+    path:"#home",
+    Component: Hero,
+  },
+  {
+    name:"Portfolio",
+    path:"#portfolio",
+    Component: Hero,
+  },
+  {
+    name:"Services",
+    path:"#services",
+    Component: Hero,
+  },
+  {
+    name:"About",
+    path:"#about",
+    Component: Hero,
+  },
+  {
+    name:"Contact",
+    path:"#contact",
+    Component: Hero,
+  },
+  {
+    name:"Blog",
+    path:"/blog",
+  },
+]
 
 const BlogIndex = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -15,17 +45,71 @@ const BlogIndex = ({ location }) => {
           title
         }
       }
+      github: file(absolutePath: { regex: "/github.png/" }) {
+        childImageSharp {
+          fixed(width: 30, height: 30, quality: 95) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      linkedin: file(absolutePath: { regex: "/linkedin.png/" }) {
+        childImageSharp {
+          fixed(width: 30, height: 30, quality: 95) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      resume: file(absolutePath: { regex: "/pdf.png/" }) {
+        childImageSharp {
+          fixed(width: 30, height: 30, quality: 95) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
 
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const social = [
+    {
+      name: 'Github',
+      url: 'https://github.com/metruzanca',
+      icon: data?.github?.childImageSharp?.fixed,
+    },
+    {
+      name: 'Linkedin',
+      url: 'https://www.linkedin.com/in/samuelz/',
+      icon: data?.linkedin?.childImageSharp?.fixed,
+    },
+    {
+      name: 'Resume',
+      url: '#THIS-DOES-NOT-WORK-YET', // TODO Resume link
+      icon: data?.resume?.childImageSharp?.fixed,
+    },
+  ]
+
+  const [highlight, setHighlight] = useState(0)
+
+    useEffect(() => {
+      console.log(highlight);
+    }, [highlight])
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <div>
       <SEO title="ZBest.Dev - Samuel's Blog and Portfolio" />
-      <Hero />
-      <SpaSection />
-    </Layout>
+      <SpaNav sections={sections} social={social} setHighlight={setHighlight} highlight={highlight}/>
+      {sections
+        .filter(({Component}) => Component !== undefined)
+        .map(({Component, path}, key) => (
+          <Component 
+            setHighlight={()=> setHighlight(key)}
+            scrollId={path.substr(1)}
+          />
+        ))
+      }
+      <footer>
+        I am Footer
+      </footer>
+    </div>
   )
 }
 

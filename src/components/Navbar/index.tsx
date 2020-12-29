@@ -1,11 +1,14 @@
 import React from "react"
 import Image, { FixedObject } from "gatsby-image"
 
+
+
 import {
   Nav,
   Li,
   Ul,
   NavLink as Link,
+  HighlightedNavLink as HighlightedLink,
   NavLogo,
   NavSocial,
   NavNav,
@@ -24,11 +27,15 @@ interface Props {
     url: string
     icon: FixedObject
   }[]
+  setHighlight:(index:number)=>void
+  highlight:number
 }
 
 const Navigation: React.FC<Props> = ({
   sections,
   social,
+  setHighlight,
+  highlight,
 }) => {
 
   return (
@@ -40,9 +47,15 @@ const Navigation: React.FC<Props> = ({
         <Ul>
           {sections.map(({name, path}, key: number) => (
             <Li key={key}>
-              <Link to={path}>
-                <span>{name}</span>
-              </Link>
+              {highlight == key ? (
+                <HighlightedLink to={path} onClick={() => setHighlight(key)}>
+                  <span>{name}</span>
+                </HighlightedLink>
+              ) : (
+                <Link to={path} onClick={() => setHighlight(key)}>
+                  <span>{name}</span>
+                </Link>
+              )}
             </Li>
           ))}
         </Ul>
@@ -51,9 +64,9 @@ const Navigation: React.FC<Props> = ({
         <Ul>
           {social.map(({name, url, icon}, key: number) => (
             <Li key={key}>
-              <Link to={url} target={'_blank'} >
-                <Image fixed={icon}/>
-              </Link>
+              <a href={url} target={'_blank'} >
+                <Image alt={name} fixed={icon}/>
+              </a>
             </Li>
           ))}
         </Ul>
