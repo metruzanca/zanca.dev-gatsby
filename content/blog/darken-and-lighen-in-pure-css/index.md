@@ -56,6 +56,7 @@ const StyledButton = styled.button`
     ${darken(.2)}
   }
 `
+```
 
 ### Method 2
 
