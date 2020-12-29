@@ -1,0 +1,30 @@
+{
+  "Gatsby Function Component": {
+    "prefix": "gfc",
+    "body": [
+      "import React from \"react\"",
+      "import { useStaticQuery, graphql } from \"gatsby\"",
+      "",
+      "// import {} from './styles'",
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "",
+      "const ${1:$TM_FILENAME_BASE}: React.FC<Props> = ({}) => {",
+      "  // const data = useStaticQuery(graphql`",
+      "  //   query ${1:$TM_FILENAME_BASE}Query {",
+      "",
+      "  //   }",
+      "  // `)",
+      "",
+      "  return (",
+      "    <div>{'$TM_FILENAME'}</div>",
+      "  )",
+      "}",
+      "",
+      "export default ${1:$TM_FILENAME_BASE};"
+    ],
+    "description": "Gatsby Function Component"
+  }
+}
