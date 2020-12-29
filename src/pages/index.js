@@ -20,11 +20,6 @@ const scrollableSections = [
     path:"#projects",
     Component: Projects,
   },
-  // {
-  //   name:"Services",
-  //   path:"#services",
-  //   Component: Projects,
-  // },
   {
     name:"About",
     path:"#about",
@@ -44,7 +39,7 @@ const additionalSections = [
   },
 ]
 
-const BlogIndex = ({ location }) => {
+const LandingPage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query SpaQuery {
       site {
@@ -89,7 +84,7 @@ const BlogIndex = ({ location }) => {
     },
     {
       name: 'Resume',
-      url: '#THIS-DOES-NOT-WORK-YET', // TODO Resume link
+      url: '/resume.pdf',
       icon: data?.resume?.childImageSharp?.fixed,
     },
   ]
@@ -125,4 +120,4 @@ const BlogIndex = ({ location }) => {
   )
 }
 
-export default BlogIndex
+export default LandingPage
