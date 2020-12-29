@@ -28,7 +28,10 @@ export const CallToAction = styled.button`
   font-size: 14px;
   font-family: ${theme.font.Heading};
   font-weight: 600;
-  color: ${theme.fg.primary};
+  & > a {
+    color: ${theme.fg.primary};
+    text-decoration: none;
+  }
 
   padding: 0 30px;
   height: 50px;

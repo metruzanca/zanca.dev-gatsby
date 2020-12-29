@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby";
 
 import {Highlight} from '../../style'
 import {Observed} from "../ObservedSection"
@@ -21,9 +22,11 @@ const Hero: React.FC<Props> = ({
         <HeroParagraph>
           Some clever professional description that describes me but isn't also boring AF as this will be the first thing they see.
         </HeroParagraph>
-        <CallToAction>
-          Previous Work
-        </CallToAction>
+        <Link to="#projects">
+          <CallToAction>
+            Previous Work
+          </CallToAction>
+        </Link>
       </HeroSection>
   )
 }
