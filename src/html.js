@@ -1,19 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-// TODO figure out how to import theme into here
-// import theme from 'style/theme'
-
-const theme = {
-  bg:{
-    primary:'#2f324c',
-    secondary:'#393b54',
-  },
-  fg:{
-    primary:'#ffffff',
-    accent:'#f7e13a',
-  }
-}
+import {theme} from './style'
 
 export default function HTML(props) {
   return (
