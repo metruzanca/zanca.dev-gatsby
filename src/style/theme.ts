@@ -38,8 +38,17 @@ export default {
   font:{
     body: serif,
     Heading: sans,
+    // 1.200 Minor Third Type Scale https://type-scale.com/
+    Size_0: '0.833rem',
+    Size_1: '1rem',
+    Size_2: '1.2rem',
+    Size_3: '1.44rem',
+    Size_4: '1.728rem',
+    Size_5: '2.074rem',
+    Size_6: '2.488rem',
+    Size_7: '2.986rem',
   },
   nav:{
     height:80
-  }
+  },
 }

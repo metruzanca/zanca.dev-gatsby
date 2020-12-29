@@ -10,11 +10,10 @@ export const HeroSection = styled.section`
   max-width: 70vw;
 `
 
-// TODO font-size inside theme.ts
 export const HeroHeading = styled.h1`
   ${HeadingCSS}
   font-weight: 500;
-  font-size: 48px;
+  font-size: ${theme.font.Size_7};
 `
 
 export const HeroParagraph = styled.p`
