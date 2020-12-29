@@ -1,7 +1,7 @@
 ---
-title: "Creating a Personal Website using Gatsby.js and Netlify CMS"
-date: "2020-12-20T20:36:56.280Z"
-description: "How I created my blog and portfolio website"
+title: Creating a Personal Website using Gatsby.js and Netlify CMS
+date: 2020-12-20T20:36:56.280Z
+description: How I created my blog and portfolio website
 ---
 
 # The Process
@@ -136,22 +136,18 @@ Not only does it make it easy to handle comments but it also makes contributing 
 
 Anyways, no clue how to setup utterances. So...
 
-##### To be continued...
+## To be continued...
 
-// TODO utteranc.es
+I've decided that I'll conitnue talking about how I made this site in blog posts tagged with #devlog.
 
-// Ahhh todo tree. So handy.
+A few of the topics being:
 
-// TODO talk about how I approached styling w/ styled components
-
-```
-cp .cache/default-html.js src/html.js
-```
-
-// TODO talk about how I slowly transitioned the existing js to ts and the limitations that gatsby imposes on us (e.g. pages need to be js, iirc)
-
-// TODO talk about how I made the projects section (no clue how I will make that section yet xD)
-
-// TODO Fix Mobile Responsiveness, which is something I'll likely break
-
-// TODO Add tags to posts
+- My experience with utteranc.es
+- How I approached styling w/ styled components
+- My modifications to html.js
+- Typescript
+- Intersection Observer Hoc on Landing page
+- Projects section using github api
+- Making everything Mobile Responsiveness
+- Post tags
+  - Search by tag?
