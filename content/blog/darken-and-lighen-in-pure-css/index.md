@@ -32,8 +32,6 @@ If you're just looking for the css to copy and paste, heres 10% lighter and 10% 
 }
 ```
 
-This cheeky solution simply lowers the brightness of the element by changing.
-
 > NB: this will change the entire element's brightness.
 
 ### Styled-Components
