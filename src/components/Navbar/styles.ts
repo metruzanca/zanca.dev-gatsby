@@ -9,7 +9,7 @@ export const Nav = styled.header`
   display: inline;
   display: grid;
   grid-template-columns: 2fr 5fr 2fr;
-  height: 80px;
+  height: ${theme.nav.height}px;
   background-color: ${theme.bg.primary};
   ${darken(.2)}
   //TODO make this centering MUCH better

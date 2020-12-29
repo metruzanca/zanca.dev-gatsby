@@ -38,4 +38,7 @@ export default {
     body: serif,
     Heading: sans,
   },
+  nav:{
+    height:80
+  }
 }

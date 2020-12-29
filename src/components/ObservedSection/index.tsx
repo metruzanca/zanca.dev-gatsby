@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useInView } from 'react-intersection-observer';
 
-import {GuardRails} from './styles'
+import {GuardRails, ScrollToOffset} from './styles'
 
 interface Props {
   setHighlight: () => void
@@ -22,7 +22,8 @@ const ObservedSection: React.FC<Props> = ({
   }, [inView])
 
   return (
-    <GuardRails ref={ref} id={scrollId}>
+    <GuardRails ref={ref}>
+      <ScrollToOffset id={scrollId}/>
       {children}
     </GuardRails>
   )
