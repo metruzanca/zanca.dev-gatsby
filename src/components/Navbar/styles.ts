@@ -50,13 +50,13 @@ export const Li = styled.li`
 export const NavLink = styled(Link)`
   text-decoration: none;
   
-  &:hover{
-    color: ${theme.fg.accent};
-  }
   /* TODO make this the default */
   color: ${theme.fg.links};
   &:visited{
     color: ${theme.fg.links};
+  }
+  &:hover{
+    color: ${theme.fg.accent};
   }
 `
 
