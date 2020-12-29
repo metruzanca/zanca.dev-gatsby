@@ -1,6 +1,6 @@
 ---
 title: Darken and Lighen in Pure CSS
-date: 2020-12-29T05:19:42.009Z
+date: 2020-12-29T05:48:09.485Z
 description: How to make SASS's Darken and Lighten mixins in pure CSS and Styled-Components
 tags:
   - styled-components
@@ -10,7 +10,13 @@ tags:
   - react
   - sass
 ---
-If you're coming from SASS, you're likely looking for a way to lighten and darken colors. After having this issue many times myself, I've found a Pure CSS solution that involves using the brightness filter.
+If you're coming from SASS, you're likely used to all the helpful mixins it comes with e.g. lighten and darken.
+
+This feature is missing from many frameworks like my favorite, Styled-Components.
+
+> The Styled-Components specific solution to this is [Polished](https://github.com/styled-components/polished).
+
+But if you want a solution that works in all frameworks by just using Pure CSS, this is what this short post is about. 
 
 ### CSS
 
@@ -25,6 +31,10 @@ If you're just looking for the css to copy and paste, heres 10% lighter and 10% 
   filter: brightness(90%);
 }
 ```
+
+This cheeky solution simply lowers the brightness of the element by changing.
+
+> NB: this will change the entire element's brightness.
 
 ### Styled-Components
 
