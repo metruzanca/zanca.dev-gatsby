@@ -6,6 +6,7 @@ import {Highlight} from '../../style'
 import {
   Nav,
   Li,
+  SocialLi,
   Ul,
   NavLink as Link,
   HighlightedNavLink as HighlightedLink,
@@ -84,11 +85,11 @@ const Navigation: React.FC<Props> = ({
       <NavSocial>
         <Ul>
           {social.map(({name, url, icon}, key: number) => (
-            <Li key={key}>
+            <SocialLi key={key}>
               <a href={url} target={'_blank'} >
                 <Image alt={name} fixed={icon}/>
               </a>
-            </Li>
+            </SocialLi>
           ))}
         </Ul>
       </NavSocial>

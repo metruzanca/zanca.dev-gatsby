@@ -47,6 +47,11 @@ export const Li = styled.li`
   padding: 0 20px 0 0;
 `
 
+export const SocialLi = styled.li`
+  display: inline;
+  padding: 0 10px 0 0;
+`
+
 export const NavLink = styled(Link)`
   text-decoration: none;
   
