@@ -355,7 +355,3 @@ table thead tr th {
     list-style-position: inside;
   }
 }
-/* TODO move to styled components */
-.highlight {
-  color: #f7e13a; /*accent*/
-}

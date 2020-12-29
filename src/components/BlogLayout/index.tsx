@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import {Highlight} from '../../style'
+
 import {Wrapper} from './style'
 
 const BlogLayout = ({ location, title, children }) => {
@@ -13,11 +15,11 @@ const BlogLayout = ({ location, title, children }) => {
       <header className="global-header">
         {isRootPath ? (
           <h1 className="main-heading">
-            <Link to="/"><span className='highlight'>{'Z'}</span>{'Best.Dev'}</Link>
+            <Link to="/"><Highlight>{'Z'}</Highlight>{'Best.Dev'}</Link>
           </h1>
         ) : (
           <Link className="header-link-home" to="/">
-            <span className='highlight'>{'Z'}</span>{'Best.Dev'}
+            <Highlight>{'Z'}</Highlight>{'Best.Dev'}
           </Link>
         )}
       </header>

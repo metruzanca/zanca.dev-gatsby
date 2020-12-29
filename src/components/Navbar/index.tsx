@@ -1,7 +1,7 @@
 import React from "react"
 import Image, { FixedObject } from "gatsby-image"
 
-
+import {Highlight} from '../../style'
 
 import {
   Nav,
@@ -47,7 +47,7 @@ const Navigation: React.FC<Props> = ({
   return (
     <Nav>
       <NavLogo>
-        <Link to="/"><span className='highlight'>{'Z'}</span>{'Best.Dev'}</Link>
+        <Link to="/"><Highlight>{'Z'}</Highlight>{'Best.Dev'}</Link>
       </NavLogo>
       <NavNav>
         <Ul>
