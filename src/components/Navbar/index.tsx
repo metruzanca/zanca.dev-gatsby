@@ -12,13 +12,18 @@ import {
   NavLogo,
   NavSocial,
   NavNav,
+  Spacer
 } from './styles'
 
 // TODO itemProp for Link and span
 // Are they just an accessibility thing or are they specific to Gatsby?
 
 interface Props {
-  sections: {
+  scrollableSections: {
+    name: string
+    path: string
+  }[]
+  additionalSections: {
     name: string
     path: string
   }[]
@@ -32,7 +37,8 @@ interface Props {
 }
 
 const Navigation: React.FC<Props> = ({
-  sections,
+  scrollableSections,
+  additionalSections,
   social,
   setHighlight,
   highlight,
@@ -45,7 +51,7 @@ const Navigation: React.FC<Props> = ({
       </NavLogo>
       <NavNav>
         <Ul>
-          {sections.map(({name, path}, key: number) => (
+          {scrollableSections.map(({name, path}, key: number) => (
             <Li key={key}>
               {highlight == key ? (
                 <HighlightedLink to={path} onClick={() => setHighlight(key)}>
@@ -57,6 +63,21 @@ const Navigation: React.FC<Props> = ({
                 </Link>
               )}
             </Li>
+          ))}
+          <Spacer>|</Spacer>
+          {additionalSections.map(({name, path}, key: number) => (
+            <Li key={key}>
+              {/* {highlight == key ? (
+                <HighlightedLink to={path} onClick={() => setHighlight(key)}>
+                  <span>{name}</span>
+                </HighlightedLink>
+              ) : ( */}
+                <Link to={path} onClick={() => setHighlight(key)}>
+                  <span>{name}</span>
+                </Link>
+              {/* )} */}
+            </Li>
+            
           ))}
         </Ul>
       </NavNav>

@@ -2,35 +2,42 @@ import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
-import Hero from "../components/Hero"
 import SpaNav from "../components/Navbar"
 
-const sections = [
+import Hero from "../components/Hero"
+import Projects from "../components/Projects"
+import About from "../components/About"
+import Contact from "../components/Contact"
+
+const scrollableSections = [
   {
     name:"Home",
     path:"#home",
     Component: Hero,
   },
   {
-    name:"Portfolio",
-    path:"#portfolio",
-    Component: Hero,
+    name:"Projects",
+    path:"#projects",
+    Component: Projects,
   },
-  {
-    name:"Services",
-    path:"#services",
-    Component: Hero,
-  },
+  // {
+  //   name:"Services",
+  //   path:"#services",
+  //   Component: Projects,
+  // },
   {
     name:"About",
     path:"#about",
-    Component: Hero,
+    Component: About,
   },
   {
     name:"Contact",
     path:"#contact",
-    Component: Hero,
-  },
+    Component: Contact,
+  }
+]
+
+const additionalSections = [
   {
     name:"Blog",
     path:"/blog",
@@ -96,9 +103,14 @@ const BlogIndex = ({ location }) => {
   return (
     <div>
       <SEO title="ZBest.Dev - Samuel's Blog and Portfolio" />
-      <SpaNav sections={sections} social={social} setHighlight={setHighlight} highlight={highlight}/>
-      {sections
-        .filter(({Component}) => Component !== undefined)
+      <SpaNav
+        scrollableSections={scrollableSections}
+        additionalSections={additionalSections}
+        social={social}
+        setHighlight={setHighlight}
+        highlight={highlight}
+      />
+      {scrollableSections
         .map(({Component, path}, key) => (
           <Component 
             setHighlight={()=> setHighlight(key)}

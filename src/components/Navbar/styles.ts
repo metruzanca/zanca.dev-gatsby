@@ -53,6 +53,11 @@ export const NavLink = styled(Link)`
   &:hover{
     color: ${theme.fg.accent};
   }
+  /* TODO make this the default */
+  color: ${theme.fg.links};
+  &:visited{
+    color: ${theme.fg.links};
+  }
 `
 
 export const HighlightedNavLink = styled(Link)`
@@ -61,4 +66,9 @@ export const HighlightedNavLink = styled(Link)`
   &:hover, &:visited{
     color: ${theme.fg.accent};
   }
+`
+// TODO add 75799a to theme
+export const Spacer = styled.span`
+  padding: 0 20px 0 0;
+  color: #75799a;
 `

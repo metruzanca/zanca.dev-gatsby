@@ -1,6 +1,8 @@
 import React, { useEffect } from "react"
 import { useInView } from 'react-intersection-observer';
 
+import {GuardRails} from './styles'
+
 interface Props {
   setHighlight: () => void
   scrollId:string
@@ -20,9 +22,9 @@ const ObservedSection: React.FC<Props> = ({
   }, [inView])
 
   return (
-    <div ref={ref} id={scrollId}>
+    <GuardRails ref={ref} id={scrollId}>
       {children}
-    </div>
+    </GuardRails>
   )
 }
 
