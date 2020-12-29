@@ -3,13 +3,13 @@ import { useInView } from 'react-intersection-observer';
 
 import {GuardRails, ScrollToOffset} from './styles'
 
-interface Props {
-  setHighlight: () => void
+export interface ObservedSectionProps {
+  handleInView: () => void
   scrollId:string
 }
 
-const ObservedSection: React.FC<Props> = ({
-  setHighlight,
+const ObservedSection: React.FC<ObservedSectionProps> = ({
+  handleInView,
   children,
   scrollId,
 }) => {
@@ -18,7 +18,7 @@ const ObservedSection: React.FC<Props> = ({
   });
 
   useEffect(() => {
-    if(inView) setHighlight()
+    if(inView) handleInView()
   }, [inView])
 
   return (
@@ -30,9 +30,9 @@ const ObservedSection: React.FC<Props> = ({
 }
 
 export function Observed<T>(Component:React.FC<T>){
-  return (props: T & Props & {scrollId:string} ) => (
+  return (props: T & ObservedSectionProps ) => (
     <ObservedSection
-      setHighlight={props.setHighlight}
+      handleInView={props.handleInView}
       scrollId={props.scrollId}
     >
       <Component {...props}/>

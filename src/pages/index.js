@@ -91,9 +91,15 @@ const LandingPage = ({ location }) => {
 
   const [highlight, setHighlight] = useState(0)
 
-    useEffect(() => {
-      console.log(highlight);
-    }, [highlight])
+  function handleInView(key, path){
+    setHighlight(key)
+    // TODO find a way to do this with gatsby's router
+    window.history.pushState({}, window.title, path);
+  }
+
+  useEffect(() => {
+    console.log(highlight);
+  }, [highlight])
 
   return (
     <div>
@@ -107,8 +113,8 @@ const LandingPage = ({ location }) => {
       />
       {scrollableSections
         .map(({Component, path}, key) => (
-          <Component 
-            setHighlight={()=> setHighlight(key)}
+          <Component
+            handleInView={()=> handleInView(key, path)}
             scrollId={path.substr(1)}
           />
         ))
