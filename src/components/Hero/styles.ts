@@ -22,7 +22,7 @@ export const HeroParagraph = styled.p`
   font-size: 16px;
   font-family: ${theme.font.Heading};
   font-weight: 400;
-  color: #75799a;
+  color: ${theme.fg.blueishGray};
 `
 // TODO make a global style button
 export const CallToAction = styled.button`

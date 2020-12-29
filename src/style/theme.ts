@@ -18,6 +18,7 @@ export default {
     accent:'#f7e13a',
     links:'#6883fd',
     linksVisited:'#8d77ff',
+    blueishGray:'#75799a',
   },
   spacing_0: '0',
   spacing_1: '0.25rem',

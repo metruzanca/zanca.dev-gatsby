@@ -67,8 +67,7 @@ export const HighlightedNavLink = styled(Link)`
     color: ${theme.fg.accent};
   }
 `
-// TODO add 75799a to theme
 export const Spacer = styled.span`
   padding: 0 20px 0 0;
-  color: #75799a;
+  color: ${theme.fg.blueishGray};
 `
