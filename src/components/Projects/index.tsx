@@ -3,21 +3,27 @@ import React from "react"
 import {Observed} from "../ObservedSection"
 import Section from '../Section'
 
-// import {} from './styles'
+import {Grid, Item} from './styles'
 
 interface Props {
+  projects:[]
 }
 
 const Projects: React.FC<Props> = ({
+  projects
 }) => {
 
   return (
     <Section title={"Projects"}>
-      <p>dawdad</p>
-      <p>njnijnjknhjk</p>
-      <p>jbjnhkb</p>
-      <p>bhkbhkb</p>
-      <p>kbjkbk</p>
+      <Grid>
+        <Item>dwadawd</Item>
+        <Item>dwadawd</Item>
+        <Item>dwadawd</Item>
+        <Item>dwadawd</Item>
+        <Item>dwadawd</Item>
+        <Item>dwadawd</Item>
+        <Item>dwadawd</Item>
+      </Grid>
     </Section>
   )
 }

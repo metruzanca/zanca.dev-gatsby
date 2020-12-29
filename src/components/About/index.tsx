@@ -3,7 +3,8 @@ import React from "react"
 import {Observed} from "../ObservedSection"
 import Section from '../Section'
 
-// import {} from './styles'
+import {Skills} from './components'
+import {Grid, Summary} from './styles'
 
 interface Props {
 }
@@ -13,11 +14,12 @@ const About: React.FC<Props> = ({
 
   return (
     <Section title={"About"}>
-      <p>dawdad</p>
-      <p>njnijnjknhjk</p>
-      <p>jbjnhkb</p>
-      <p>bhkbhkb</p>
-      <p>kbjkbk</p>
+      <Grid>
+        <Summary>
+          Professional Summary etc etc etc Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam ad provident optio vel distinctio ipsam illo eius suscipit odit, quia officiis veniam rem quos est, obcaecati voluptas, soluta natus expedita!
+        </Summary>
+        <Skills skills={["Nodejs", "React", "javascript", "Typescript"]}/>
+      </Grid>
     </Section>
   )
 }
