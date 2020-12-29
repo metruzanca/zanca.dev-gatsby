@@ -9,6 +9,8 @@ interface Props {
   projects:[]
 }
 
+// TODO Intersection observer needs a custom config for this section as 70% of it cannot be in view at once as its too big.
+
 const Projects: React.FC<Props> = ({
   projects
 }) => {
