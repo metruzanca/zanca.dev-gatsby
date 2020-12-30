@@ -8,8 +8,8 @@ import {Wrapper} from './style'
 const BlogLayout = ({ location, title, children }) => {
   //@ts-ignore Gatsby Environment Variable
   const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-
+  const isRootPath = location.pathname === rootPath + 'blog'
+  
   return (
     <Wrapper>
       <header className="global-header">
