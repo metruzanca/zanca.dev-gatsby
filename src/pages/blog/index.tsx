@@ -1,9 +1,11 @@
 import React from "react"
 import { PageProps, Link, graphql } from "gatsby"
 
-import Layout from "../components/BlogLayout"
-import SEO from "../components/seo"
-import Bio from "../components/bio"
+import Layout from "../../components/BlogLayout"
+import SEO from "../../components/seo"
+import Bio from "../../components/bio"
+
+import {ReadingTime} from './style'
 
 interface DataProps {
   allMarkdownRemark: {
@@ -11,6 +13,9 @@ interface DataProps {
       excerpt: string
       fields: {
         slug: string
+        readingTime: {
+          text: string
+        }
       }
       frontmatter: {
         date: string
@@ -21,7 +26,7 @@ interface DataProps {
   }
 }
 
-const UsingTypescript: React.FC<PageProps<DataProps>> = ({
+const Blog: React.FC<PageProps<DataProps>> = ({
   data,
   location,
 }) => {
@@ -47,7 +52,7 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({
                         <span itemProp="headline">{title}</span>
                       </Link>
                     </h2>
-                    <small>{post.frontmatter.date}</small>
+                    <small>{post.frontmatter.date}</small> <ReadingTime>{post.fields.readingTime.text}</ReadingTime>
                   </header>
                   <section>
                     <p
@@ -66,7 +71,7 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({
   )
 }
 
-export default UsingTypescript
+export default Blog
 
 export const query = graphql`
   {
@@ -75,6 +80,12 @@ export const query = graphql`
         excerpt
         fields {
           slug
+          readingTime {
+            text    # ‘1 min read'
+            # minutes # '1'
+            # time    # '60000'
+            # words   # 200
+          }
         }
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
