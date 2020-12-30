@@ -1,7 +1,8 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://zbest.dev">
-    <img alt="zbestdev" src="https://zbest.dev/ZBest-dev.svg" width="60" />
+    <!-- TODO Put live URL once this branch merges -->
+    <img alt="zbestdev" src="https://raw.githubusercontent.com/metruzanca/zbest_dev/feature/landing-page/static/ZBest-dev.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
