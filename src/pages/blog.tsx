@@ -1,11 +1,14 @@
 import React from "react"
 import { PageProps, Link, graphql } from "gatsby"
+import styled from "styled-components";
 
-import Layout from "../../components/BlogLayout"
-import SEO from "../../components/seo"
-import Bio from "../../components/bio"
+import Layout from "../components/BlogLayout"
+import SEO from "../components/seo"
+import Bio from "../components/bio"
 
-import {ReadingTime} from './style'
+const ReadingTime = styled.small`
+  margin-left: 3em;
+`
 
 interface DataProps {
   allMarkdownRemark: {
