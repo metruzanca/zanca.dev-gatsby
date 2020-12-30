@@ -21,6 +21,7 @@ export const Nav = styled.header`
 
 export const NavLogo = styled.span`
   ${HeadingCSS}
+  font-size: ${theme.font.Size_3};
 /*TODO Remove this color: white thing */
   & > a, & > a:visited {
     color: white;
@@ -29,6 +30,7 @@ export const NavLogo = styled.span`
 `
 
 export const NavNav = styled.nav`
+  ${HeadingCSS}
   grid-column: 2;
 `
 export const NavSocial = styled.span`

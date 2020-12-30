@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
@@ -71,6 +71,7 @@ const LandingPage = ({ location }) => {
     }
   `)
 
+  //TODO Move to gatsby-config site meta data, and modify the query above to include the info stored in the side meta
   const social = [
     {
       name: 'Github',
@@ -94,12 +95,8 @@ const LandingPage = ({ location }) => {
   function handleInView(key, path){
     setHighlight(key)
     // TODO find a way to do this with gatsby's router
-    window.history.pushState({}, window.title, path);
+    // window.history.pushState({}, window.title, path);
   }
-
-  useEffect(() => {
-    console.log(highlight);
-  }, [highlight])
 
   return (
     <div>
