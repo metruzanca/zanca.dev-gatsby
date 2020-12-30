@@ -71,6 +71,16 @@ module.exports = {
         icon: `content/assets/icon.png`,
       },
     },
+    {
+      resolve: "gatsby-plugin-page-progress",
+      options: {
+        includePaths: [{ regex: "^/blog/" }],
+        height: 3,
+        prependToBody: false,
+        color: `#667fff`,
+        // footerHeight: 500,
+      },
+    },
     // 'gatsby-plugin-root-import', // TODO absolute imports for components/pages
     `gatsby-plugin-react-helmet`,
     "gatsby-plugin-typescript",
