@@ -23,7 +23,7 @@ import {MyComponent} from 'components/MyComponent.tsx'
 ```
 
 Heres the snippet you need:
-```jsonc
+```json
 // tsconfig.json
 {
   "compilerOptions": {
