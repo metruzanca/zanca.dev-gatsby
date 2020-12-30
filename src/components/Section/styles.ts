@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../style";
 
 export const SectionWrapper = styled.section`
@@ -7,8 +7,11 @@ export const SectionWrapper = styled.section`
   max-width: 70vw;
 `
 
-export const Heading = styled.h2`
-  color:${theme.fg.links};
+interface HeadingProps {
+  alt?:boolean
+}
+
+const headingLine = css`
   &::after{
     display: block;
     content:'';
@@ -16,4 +19,9 @@ export const Heading = styled.h2`
     margin:20px 0 ;
     border-bottom: 5px solid ${theme.fg.links};
   }
+`
+
+export const Heading = styled.h2<HeadingProps>`
+  color: ${theme.fg.links};
+  ${props => !props.alt && headingLine}
 `

@@ -12,7 +12,7 @@ const Contact: React.FC<Props> = ({
 }) => {
 
   return (
-    <Section title={"Connect with me"}>
+    <Section title={"Connect with me"} alt>
       <p>dawdad</p>
       <p>njnijnjknhjk</p>
       <p>jbjnhkb</p>
