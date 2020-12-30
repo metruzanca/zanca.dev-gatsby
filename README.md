@@ -11,22 +11,33 @@
 
 My personal Blog and Portfolio. Here you'll find a collection of my technical ramblings. Mostly on frontend development.
 
-## 🚀 Features 🚀
+## Built with 🛠
+
+- Love
+- Gatsby
+- Netlify CMS
+- Typescript
+- Styled-Components
+- Markdown
+
+## Features 🚀
 
 > For now this is acting as a personal todolist for the site
 
-### Gatsby
+### ![Gatsby](https://gatsbyjs.com/icons-3ad5294f3fa6c06e2d07ab07c76df2cf/favicon-32x32.png) Gatsby Related Features
 
 - Static Site Load Speed
-- SEO Meta tags
+- Automatic optimization of images in Markdown posts
+- Support for code syntax highlighting
+- Includes React Helmet to allow editing site meta tags
 - Reading Time Calculation
 
-### Netlify
+### ![Netlify](https://www.netlify.com/v3/static/favicon/favicon-32x32.png) Netlify Related Features
 
 - Drafting/Preview Blog posts
 - Smooth scroll when clicking on a navlink with #href
 
-### General
+### ![ZBest](https://raw.githubusercontent.com/metruzanca/zbest_dev/feature/landing-page/static/favicon-32x32.svg) Custom Features
 
 - Intersection observer for animated navbar.
 
@@ -34,7 +45,11 @@ My personal Blog and Portfolio. Here you'll find a collection of my technical ra
 
 ### Gatsby TODO:
 
+- [ ] Blog Tags
+- [ ] Utterenc.es for comments
 - [ ] RSS feed
+- [ ] Offiline
+- [ ] Categories/Series (e.g. devlog)
 
 ### Netlify TODO:
 
@@ -59,6 +74,14 @@ My personal Blog and Portfolio. Here you'll find a collection of my technical ra
 - [ ] Crossposting with syndication(_am i using this word right?_) linking back to website.
   - [Dev.to](http://Dev.to)
   - [Medium](http://Medium.com)
-- [ ] Automatic Social Media posts with new blog articles
+- [ ] Automatic Social Media posts with new blog articles (Also check: Twitter/Linkedin Cards meta)
   - Linkedin [Most important]
   - Twatter
+- [ ] Integration of some kind with [JSONResume](JSONResume.org)
+  - Create a better JSONResume theme.
+  - Keep resume in JSON format.
+  - Use data from JSON resume to update Work Experience section and vice versa.
+  - Add a Section to the CMS (/admin) to update the JSON resume maybe? (take advantage of netlify's editor)
+  - Update the hosted resume with JSONResume. (_The one which is available to download from [zbest.dev/resume.pdf](https://zbest.dev/resume.pdf)_)
+    - Update [linkedin](https://developer.linkedin.com/docs/v1/compliance/profile-edit-api) and indeed profiles. (Doesn't seem possible on indeed, :( )
+  - Update all social platform's "working @ xyz" Fields
