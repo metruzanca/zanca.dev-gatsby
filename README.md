@@ -24,42 +24,30 @@ My personal Blog and Portfolio. Here you'll find a collection of my technical ra
 
 > For now this is acting as a personal todolist for the site
 
-### ![Gatsby](https://gatsbyjs.com/icons-3ad5294f3fa6c06e2d07ab07c76df2cf/favicon-32x32.png) Gatsby Related Features
+With [Gatsby](https://gatsbyjs.com) we get the following for free:
 
 - Static Site Load Speed
 - Automatic optimization of images in Markdown posts
 - Support for code syntax highlighting
 - Includes React Helmet to allow editing site meta tags
+
+Using [Netlify](https://www.netlifycms.org/) for hosting and CMS
+(_also Drafting/Preview Blog posts_)
+
+Custom Features:
+
 - Reading Time Calculation
-
-### ![Netlify](https://www.netlify.com/v3/static/favicon/favicon-32x32.png) Netlify Related Features
-
-- Drafting/Preview Blog posts
+- Reading progress bar
 - Smooth scroll when clicking on a navlink with #href
-
-### ![ZBest](https://raw.githubusercontent.com/metruzanca/zbest_dev/feature/landing-page/static/favicon-32x32.svg) Custom Features
-
 - Intersection observer for animated navbar.
 
-## Stuff To Do
-
-### Gatsby TODO:
+### To Do:
 
 - [ ] Blog Tags
 - [ ] Utterenc.es for comments
 - [ ] RSS feed
 - [ ] Offiline
 - [ ] Categories/Series (e.g. devlog)
-
-### Netlify TODO:
-
-- [ ] Site Map sent to google
-  - Need to enable plugin for this.
-- [ ] Backend analitics for popular pages / successful blog articles
-- [ ] Form submissions
-
-### General TODOs:
-
 - [ ] Finish landing page, duh.
 - [ ] Wakatime widget?
 - [ ] Snazzy Work Experience section
@@ -85,3 +73,10 @@ My personal Blog and Portfolio. Here you'll find a collection of my technical ra
   - Update the hosted resume with JSONResume. (_The one which is available to download from [zbest.dev/resume.pdf](https://zbest.dev/resume.pdf)_)
     - Update [linkedin](https://developer.linkedin.com/docs/v1/compliance/profile-edit-api) and indeed profiles. (Doesn't seem possible on indeed, :( )
   - Update all social platform's "working @ xyz" Fields
+
+### Netlify TODO:
+
+- [ ] Site Map sent to google
+  - Need to enable plugin for this.
+- [ ] Backend analitics for popular pages / successful blog articles
+- [ ] Form submissions
