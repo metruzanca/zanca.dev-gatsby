@@ -18,14 +18,14 @@ My short-term was easy to achieve. In fact, I achieved it in a day and detailed 
 
 ## Long Term
 
-Meanwhile my Long-Term plan had a few extra steps. The First of which was really easy to do and thats *Design a Long-Term URL Structure*. 
+Meanwhile, my Long-Term plan had a few extra steps. The First of which was really easy to do and that's *Design a Long-Term URL Structure*. 
 
-This step is really important to do before you hand in your first SiteMap to the search engines, because if you change your URL structure, you can severly impact your ranking. Lucky for us Its really easy for blogging and can be broken down into a few pointers.
+This step is really important to do before you hand in your first SiteMap to the search engines because if you change your URL structure, you can severely impact your ranking. Lucky for us Its really easy for blogging and can be broken down into a few pointers.
 
 ### Good URL Structure
 
 #### 1. Don't change your URLs
-This means that once you publish a page to the world, you want to avoid changing the URL. Why? Lets think of a practical example. If you scroll up to the [Short-Term](#TODO link to this page#Short-Term) paragraph, you'll notice I have a link  to another blog post. Great, now Imagine you've changed the URL to that post and you've just broken an internal link which you have control of. Sure, you can change this URL by editing the blog post or automate this process somehow by using blog IDs or something. But what about pages you can't edit. E.g. If someone were to link to your article "...check out this amazing post by Samuele talking about SEO Strategy..." and clicking that link leads to a 404. Doesn't look too good does it? Its probably going to make both of you look bad to have a broken link. Luckily, in the worse case scenario, you could always make a redirect kind of like how [Dan Abramov](https://mobile.twitter.com/dan_abramov) had to do on his ([Blog](http://overreacted.io))
+This means that once you publish a page to the world, you want to avoid changing the URL. Why? Let's think of a practical example. If you scroll up to the [Short-Term](#TODO link to this page#Short-Term) paragraph, you'll notice I have a link to another blog post. Great, now Imagine you've changed the URL to that post and you've just broken an internal link which you have control of. Sure, you can change this URL by editing the blog post or automate this process somehow by using blog IDs or something. But what about pages you can't edit. For E.g. If someone were to link to your article "...check out this amazing post by Samuele talking about SEO Strategy..." and clicking that link leads to a 404. Doesn't look too good, does it? It's probably going to make both of you look bad to have a broken link. Luckily, in the worst-case scenario, you could always make a redirect kind of like how [Dan Abramov](https://mobile.twitter.com/dan_abramov) had to do on his ([Blog](http://overreacted.io))
 
 ```js
 exports.createPages = ({ graphql, actions }) => {
@@ -56,18 +56,36 @@ exports.createPages = ({ graphql, actions }) => {
 ```
 
 // TODO Write more here in this section
-e.g. Bad gatsby default of no /blog/ slug
+e.g.
+- Bad gatsby default of no /blog/ slug
+- if you use php, why .php at the end of a url is bad
+
+Remove stop words
+
+include primary keyword
 
 this point is bad "off-site SEO"
 
 ### 2. Page Title and Metadata
 
 title -> 20-50 chars long
+description -> 50–160 chars
 Show screenshot of how title & meta shows up on search.
 
 How you get good defaults from gatsby
 
-### 3. 
+maybe mention favicons here?
+
+viewport meta tag, should already be set
+
+meta author? (not really needed for my page, but for cms like medium would
+
+char set? Pretty sure react Helmet has that by default to UTF-8
+
+### 3. Image compression
+free via gatsby, talk about how its configured and its options.
+
+### 4.
 
 
 
