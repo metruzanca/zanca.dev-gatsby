@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Layout from "../components/BlogLayout"
 import SEO from "../components/seo"
 import Bio from "../components/bio"
+import Navbar from "../components/Navbar"
 
 const ReadingTime = styled.small`
   margin-left: 3em;
@@ -29,6 +30,32 @@ interface DataProps {
   }
 }
 
+const scrollableSections = [
+  {
+    name:"Home",
+    path:"/#contact",
+  },
+  {
+    name:"Projects",
+    path:"/#contact",
+  },
+  {
+    name:"About",
+    path:"/#contact",
+  },
+  {
+    name:"Contact",
+    path:"/#contact",
+  }
+]
+
+const additionalSections = [
+  {
+    name:"Blog",
+    path:"/blog",
+  },
+]
+
 const Blog: React.FC<PageProps<DataProps>> = ({
   data,
   location,
@@ -36,6 +63,10 @@ const Blog: React.FC<PageProps<DataProps>> = ({
     const posts = data.allMarkdownRemark.nodes
   return (
     <Layout title="Blog" location={location}>
+      {/* <Navbar
+        scrollableSections={scrollableSections}
+        additionalSections={additionalSections}
+      /> */}
       <SEO title="Blog" />
       <Bio />
         <ol style={{ listStyle: `none` }}>

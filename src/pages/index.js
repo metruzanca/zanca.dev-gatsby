@@ -9,11 +9,18 @@ import Projects from "../components/Projects"
 import About from "../components/About"
 import Contact from "../components/Contact"
 
+import { jump } from '../utils'
+
 const scrollableSections = [
   {
     name:"Home",
     path:"#home",
     Component: Hero,
+    props:{
+      name: "Samuele",
+      title: "Full-Stack Developer",
+      paragraph: "I build Bespoke webapps using React and Nodejs for Individuals and Businesses",
+    }
   },
   {
     name:"Projects",
@@ -24,6 +31,10 @@ const scrollableSections = [
     name:"About",
     path:"#about",
     Component: About,
+    props: {
+      summary: "",
+      skills:[],
+    }
   },
   {
     name:"Contact",
@@ -92,14 +103,23 @@ const LandingPage = ({ location }) => {
 
   const [highlight, setHighlight] = useState(0)
 
+  //FIXME Refactor the way this useState's props get passed down.
+  const [isObserving, setIsObserving] = useState(false)
+
+  function scrollToSection(key, path){
+    setHighlight(key)
+    setIsObserving(false)
+    jump(path, () => setIsObserving(true))
+  }
+
   function handleInView(key, path){
     setHighlight(key)
     // TODO find a way to do this with gatsby's router
-    // window.history.pushState({}, window.title, path);
+    window.history.pushState({}, window.title, path);
   }
 
   return (
-    <div>
+    <div style={{scrollBehavior:'smooth'}}>
       <SEO title="ZBest.Dev - Samuel's Blog and Portfolio" />
       <SpaNav
         scrollableSections={scrollableSections}
@@ -107,12 +127,15 @@ const LandingPage = ({ location }) => {
         social={social}
         setHighlight={setHighlight}
         highlight={highlight}
+        scrollToSection={scrollToSection}
       />
       {scrollableSections
-        .map(({Component, path}, key) => (
+        .map(({Component, path, props}, key) => (
           <Component
             handleInView={()=> handleInView(key, path)}
             scrollId={path.substr(1)}
+            isObserving={isObserving}
+            {...props}
           />
         ))
       }

@@ -1,23 +1,28 @@
 import React from "react"
 import Image, { FixedObject } from "gatsby-image"
 
+import { jump } from '../../utils'
 import {Highlight} from '../../style'
 
 import {
-  Nav,
-  Li,
-  SocialLi,
-  Ul,
-  NavLink as Link,
-  HighlightedNavLink as HighlightedLink,
+  NavWrapper,
   NavLogo,
+  Nav,
+  Spacer,
   NavSocial,
-  NavNav,
-  Spacer
+  Ul,
+  LinkLi,
+  SocialLi,
+  NavLink,
+  HighlightedNavLink,
+  AnchorLink,
+  HighlightedAnchorLink,
 } from './styles'
 
 // TODO itemProp for Link and span
 // Are they just an accessibility thing or are they specific to Gatsby?
+
+// ?.github?.childImageSharp?.fixed,
 
 interface Props {
   scrollableSections: {
@@ -31,10 +36,15 @@ interface Props {
   social: {
     name: string
     url: string
-    icon: FixedObject
+    icon: {
+      childImageSharp: {
+        fixed: FixedObject
+      }
+    }
   }[]
   setHighlight:(index:number)=>void
   highlight:number
+  scrollToSection: Function
 }
 
 const Navigation: React.FC<Props> = ({
@@ -43,57 +53,57 @@ const Navigation: React.FC<Props> = ({
   social,
   setHighlight,
   highlight,
+  scrollToSection,
 }) => {
-
+  console.log(social)
   return (
-    <Nav>
+    <NavWrapper>
       <NavLogo>
-        <Link to="/"><Highlight>{'Z'}</Highlight>{'Best.Dev'}</Link>
+        <NavLink to="/"><Highlight>{'Z'}</Highlight>{'Best.Dev'}</NavLink>
       </NavLogo>
-      <NavNav>
+      <Nav>
         <Ul>
           {scrollableSections.map(({name, path}, key: number) => (
-            <Li key={key}>
+            <LinkLi key={key}>
               {highlight == key ? (
-                <HighlightedLink to={path} onClick={() => setHighlight(key)}>
+                <HighlightedAnchorLink onClick={() => scrollToSection(key, path)}>
                   <span>{name}</span>
-                </HighlightedLink>
+                </HighlightedAnchorLink>
               ) : (
-                <Link to={path} onClick={() => setHighlight(key)}>
+                <AnchorLink onClick={() => scrollToSection(key, path)}>
                   <span>{name}</span>
-                </Link>
+                </AnchorLink>
               )}
-            </Li>
+            </LinkLi>
           ))}
           <Spacer>|</Spacer>
           {additionalSections.map(({name, path}, key: number) => (
-            <Li key={key}>
-              {/* {highlight == key ? (
-                <HighlightedLink to={path} onClick={() => setHighlight(key)}>
+            <LinkLi key={key}>
+              {highlight == key + scrollableSections.length ? (
+                <HighlightedNavLink to={path} onClick={() => setHighlight(key)}>
                   <span>{name}</span>
-                </HighlightedLink>
-              ) : ( */}
-                <Link to={path} onClick={() => setHighlight(key)}>
+                </HighlightedNavLink>
+              ) : (
+                <NavLink to={path} onClick={() => setHighlight(key)}>
                   <span>{name}</span>
-                </Link>
-              {/* )} */}
-            </Li>
-            
+                </NavLink>
+              )}
+            </LinkLi>
           ))}
         </Ul>
-      </NavNav>
+      </Nav>
       <NavSocial>
         <Ul>
-          {social.map(({name, url, icon}, key: number) => (
+          {/* {social.map(({name, url, icon}, key: number) => (
             <SocialLi key={key}>
               <a href={url} target={'_blank'} >
                 <Image alt={name} fixed={icon}/>
               </a>
             </SocialLi>
-          ))}
+          ))} */}
         </Ul>
       </NavSocial>
-    </Nav>
+    </NavWrapper>
   )
 }
 

@@ -70,6 +70,7 @@ const SEO = ({ description, lang, meta, title }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
+        // TODO Adds post tags as meta name="keywords"
       ].concat(meta)}
     />
   )

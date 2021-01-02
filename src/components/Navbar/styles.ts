@@ -1,14 +1,14 @@
 import React from "react"
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 import {theme, Link, HeadingCSS, darken} from '../../style'
 
 // Logo(ZbestDev)      Nav[Home, Projects, Services, About, Contact, Blog]     Social[Linkedin, GitHub, Resume]
 
-export const Nav = styled.header`
+export const NavWrapper = styled.header`
   display: inline;
   display: grid;
-  grid-template-columns: 2fr 5fr 2fr;
+  grid-template-columns: 2fr 6fr 2fr;
   height: ${theme.nav.height}px;
   background-color: ${theme.bg.primary};
   ${darken(.2)}
@@ -29,12 +29,13 @@ export const NavLogo = styled.span`
   grid-column: 1;
 `
 
-export const NavNav = styled.nav`
+export const Nav = styled.nav`
   ${HeadingCSS}
   grid-column: 2;
 `
 export const NavSocial = styled.span`
   grid-column: 3;
+  min-width: 120px;
 `
 
 export const Ul = styled.ul`
@@ -44,7 +45,7 @@ export const Ul = styled.ul`
   margin: 0;
 `
 
-export const Li = styled.li`
+export const LinkLi = styled.li`
   display: inline;
   padding: 0 20px 0 0;
 `
@@ -54,7 +55,8 @@ export const SocialLi = styled.li`
   padding: 0 10px 0 0;
 `
 
-export const NavLink = styled(Link)`
+const navlink = css`
+  cursor:pointer;
   text-decoration: none;
   
   /* TODO make this the default */
@@ -67,13 +69,21 @@ export const NavLink = styled(Link)`
   }
 `
 
-export const HighlightedNavLink = styled(Link)`
+const highlighted = css`
+  cursor:pointer;
   text-decoration: none;
   color: ${theme.fg.accent};
   &:hover, &:visited{
     color: ${theme.fg.accent};
   }
 `
+
+export const NavLink = styled(Link)`${navlink}`
+export const HighlightedNavLink = styled(Link)`${highlighted}`
+
+export const AnchorLink = styled.a`${navlink}`
+export const HighlightedAnchorLink = styled.a`${highlighted}`
+
 export const Spacer = styled.span`
   padding: 0 20px 0 0;
   color: ${theme.fg.blueishGray};

@@ -4,13 +4,13 @@ import {HeadingCSS, theme, darken} from '../../style'
 
 export const HeroSection = styled.section`
   height: 80vh;
-  border: 1px solid red;
   /* TODO This won't do it for mobile responsive. Must lookup how to make responsive hero section */
   margin: 0 auto;
   max-width: 70vw;
 `
 
 export const HeroHeading = styled.h1`
+  padding-top: 1em;
   ${HeadingCSS}
   font-weight: 500;
   font-size: ${theme.font.Size_7};

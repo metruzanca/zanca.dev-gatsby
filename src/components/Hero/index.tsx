@@ -3,30 +3,39 @@ import { Link } from "gatsby";
 
 import {Highlight} from '../../style'
 import {Observed} from "../ObservedSection"
+import ScrollIndicator from "../ScrollIndicator"
 
 import {HeroSection, HeroHeading, HeroParagraph, CallToAction} from './styles'
 
+
 interface Props {
+  name:string
+  title:string
+  paragraph:string
 }
 
 const Hero: React.FC<Props> = ({
+  name,
+  title,
+  paragraph,
 }) => {
 
   return (
       <HeroSection>
         <HeroHeading>
-          Hello, I'm <Highlight>Samuele Zanca</Highlight>
+          Hello, I'm <Highlight>{name}</Highlight>
           <br/>
-          a Full-Stack Developer
+          {title}
         </HeroHeading>
         <HeroParagraph>
-          Some clever professional description that describes me but isn't also boring AF as this will be the first thing they see.
+          {paragraph}
         </HeroParagraph>
         <Link to="#projects">
           <CallToAction>
             Previous Work
           </CallToAction>
         </Link>
+        <ScrollIndicator href="#projects" onClick={()=> console.log("scroll clicked")}/>
       </HeroSection>
   )
 }
