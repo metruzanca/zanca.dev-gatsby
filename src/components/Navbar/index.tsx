@@ -10,8 +10,8 @@ import {
   NavSocial,
   Ul,
   LinkLi,
-  NavLink,
-  HighlightedNavLink,
+  // NavLink,
+  // HighlightedNavLink,
   AnchorLink,
   HighlightedAnchorLink,
 } from './styles'
@@ -41,116 +41,49 @@ const Navigation: React.FC<Props> = ({
   scrollableSections,
   additionalSections,
   highlight,
-  // The case in which this default is used, this function is not called
-  scrollToSection = () => {},
+  scrollToSection,
 }) => {
-  // const isBrowser = window.isBrowser || false
+  const CSRLandingPage = typeof window !== `undefined` && window.isBrowserWithJavascript
 
   return (
     <NavWrapper>
       <NavLogo>
-        <NavLink to="/"><Highlight>{'Z'}</Highlight>{'Best.Dev'}</NavLink>
+        <AnchorLink href="/"><Highlight>{'Z'}</Highlight>{'Best.Dev'}</AnchorLink>
       </NavLogo>
       <Nav>
         <Ul>
-          <ScrollableSections
-            highlight={highlight}
-            mode={getRenderingMode()}
-            scrollToSection={scrollToSection}
-            scrollableSections={scrollableSections}
-          />
+          {CSRLandingPage && scrollToSection !== undefined ? 
+            scrollableSections.map(({name, path}, key: number) => (
+              <LinkLi key={key}>
+                {highlight == key ? (
+                  <HighlightedAnchorLink onClick={() => scrollToSection(key, path)}>
+                    <span>{name}</span>
+                  </HighlightedAnchorLink>
+                ) : (
+                  <AnchorLink onClick={() => scrollToSection(key, path)}>
+                    <span>{name}</span>
+                  </AnchorLink>
+                )}
+              </LinkLi>
+            ))
+           : scrollableSections.map(({name, path}, key: number) => (
+              <LinkLi key={key}>
+                {highlight == key ? (
+                  <HighlightedAnchorLink href={path}>
+                    <span>{name}</span>
+                  </HighlightedAnchorLink>
+                ) : (
+                  <AnchorLink href={path}>
+                    <span>{name}</span>
+                  </AnchorLink>
+                )}
+              </LinkLi>
+            ))
+          }
           <Spacer>|</Spacer>
           {additionalSections.map(({name, path}, key: number) => (
             <LinkLi key={key}>
               {highlight == key + scrollableSections.length ? (
-                <HighlightedNavLink to={path}>
-                  <span>{name}</span>
-                </HighlightedNavLink>
-              ) : (
-                <NavLink to={path}>
-                  <span>{name}</span>
-                </NavLink>
-              )}
-            </LinkLi>
-          ))}
-        </Ul>
-      </Nav>
-      <NavSocial>
-          <SocialIcons/>
-      </NavSocial>
-    </NavWrapper>
-  )
-}
-
-type PreRender = {
-  mode: RenderModes.pre_render
-  scrollableSections: ScrollableSections
-  highlight: number
-}
-
-type Landing = {
-  mode: RenderModes.landing
-  scrollableSections: ScrollableSections
-  highlight: number
-  scrollToSection: Function
-}
-
-type ScrollableProps = PreRender | Landing
-
-enum RenderModes {
-  landing = 'landing',
-  pre_render = 'pre_render',
-}
-
-function getRenderingMode(){
-  if(typeof window !== `undefined` && window.isBrowserWithJavascript){
-    return RenderModes.landing
-  }
-  return RenderModes.pre_render
-}
-
-// Gatsby wasn't cooperating so I had to make this slightly over-complicated thing.
-// Basically the pre-rendering wasn't rendering anything at all for ScrollableSections
-// FIXME can definetly simplify with a nice if else inline, if this works in no-js
-const ScrollableSections: React.FC<ScrollableProps> = (props) => {
-  switch(props.mode){
-    case RenderModes.landing: {
-      const {
-        scrollableSections,
-        highlight,
-        scrollToSection,
-      } = props
-      return (
-        <>
-          {/* scrollToSection is always defined, but due to it being set as ?, this is needed */}
-          {scrollToSection && scrollableSections.map(({name, path}, key: number) => (
-            <LinkLi key={key}>
-              {highlight == key ? (
-                <HighlightedAnchorLink onClick={() => scrollToSection(key, path)}>
-                  <span>{name}</span>
-                </HighlightedAnchorLink>
-              ) : (
-                <AnchorLink onClick={() => scrollToSection(key, path)}>
-                  <span>{name}</span>
-                </AnchorLink>
-              )}
-            </LinkLi>
-          ))}
-        </>
-      )
-    }
-    // pre-rendering & no-js cases 
-    case RenderModes.pre_render:
-    default: {
-      const {
-        scrollableSections,
-        highlight,
-      } = props      
-      return (
-        <>
-          {scrollableSections.map(({name, path}, key: number) => (
-            <LinkLi key={key}>
-              {highlight == key ? (
                 <HighlightedAnchorLink href={path}>
                   <span>{name}</span>
                 </HighlightedAnchorLink>
@@ -161,10 +94,13 @@ const ScrollableSections: React.FC<ScrollableProps> = (props) => {
               )}
             </LinkLi>
           ))}
-        </>
-      )
-    }
-  }
+        </Ul>
+      </Nav>
+      <NavSocial>
+          <SocialIcons/>
+      </NavSocial>
+    </NavWrapper>
+  )
 }
 
 export default Navigation;
