@@ -113,7 +113,7 @@ function getRenderingMode(scrollToSection){
   if(scrollToSection !== undefined){    
     return RenderModes.landing
   }
-  if(window?.isBrowserWithJavascript){
+  if(window && window.isBrowserWithJavascript){
     return RenderModes.pre_render_landing
   }
   return RenderModes.pre_render_blog
