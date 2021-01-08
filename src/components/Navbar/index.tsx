@@ -41,7 +41,8 @@ const Navigation: React.FC<Props> = ({
   scrollableSections,
   additionalSections,
   highlight,
-  scrollToSection = undefined,
+  // The case in which this default is used, this function is not called
+  scrollToSection = () => {},
 }) => {
   // const isBrowser = window.isBrowser || false
 
@@ -54,7 +55,7 @@ const Navigation: React.FC<Props> = ({
         <Ul>
           <ScrollableSections
             highlight={highlight}
-            mode={getRenderingMode(scrollToSection)}
+            mode={getRenderingMode()}
             scrollToSection={scrollToSection}
             scrollableSections={scrollableSections}
           />
@@ -81,14 +82,8 @@ const Navigation: React.FC<Props> = ({
   )
 }
 
-type PreRenderBlog = {
-  mode: RenderModes.pre_render_blog
-  scrollableSections: ScrollableSections
-  highlight: number
-}
-
-type PreRenderLanding = {
-  mode: RenderModes.pre_render_landing
+type PreRender = {
+  mode: RenderModes.pre_render
   scrollableSections: ScrollableSections
   highlight: number
 }
@@ -97,26 +92,21 @@ type Landing = {
   mode: RenderModes.landing
   scrollableSections: ScrollableSections
   highlight: number
-  scrollToSection?: Function
-  // isBrowser: boolean
+  scrollToSection: Function
 }
 
-type ScrollableProps = PreRenderBlog | PreRenderLanding | Landing
+type ScrollableProps = PreRender | Landing
 
 enum RenderModes {
   landing = 'landing',
-  pre_render_landing = 'pre_render_landing',
-  pre_render_blog = 'pre_render_blog',
+  pre_render = 'pre_render',
 }
 
-function getRenderingMode(scrollToSection){
-  if(scrollToSection !== undefined){    
+function getRenderingMode(){
+  if(typeof window !== `undefined` && window.isBrowserWithJavascript){
     return RenderModes.landing
   }
-  if(window && window.isBrowserWithJavascript){
-    return RenderModes.pre_render_landing
-  }
-  return RenderModes.pre_render_blog
+  return RenderModes.pre_render
 }
 
 // Gatsby wasn't cooperating so I had to make this slightly over-complicated thing.
@@ -150,8 +140,7 @@ const ScrollableSections: React.FC<ScrollableProps> = (props) => {
       )
     }
     // pre-rendering & no-js cases 
-    case RenderModes.pre_render_landing:
-    case RenderModes.pre_render_blog:
+    case RenderModes.pre_render:
     default: {
       const {
         scrollableSections,
