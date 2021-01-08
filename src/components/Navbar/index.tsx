@@ -41,7 +41,7 @@ const Navigation: React.FC<Props> = ({
   scrollableSections,
   additionalSections,
   highlight,
-  scrollToSection = null,
+  scrollToSection = undefined,
 }) => {
   const isBrowser = window.isBrowser || false
 
@@ -52,32 +52,12 @@ const Navigation: React.FC<Props> = ({
       </NavLogo>
       <Nav>
         <Ul>
-          {!isBrowser || scrollToSection == null && scrollableSections.map(({name, path}, key: number) => (
-            <LinkLi key={key}>
-              {highlight == key ? (
-                <HighlightedNavLink to={path}>
-                  <span>{name}</span>
-                </HighlightedNavLink>
-              ) : (
-                <NavLink to={path}>
-                  <span>{name}</span>
-                </NavLink>
-              )}
-            </LinkLi>
-          ))}
-          {scrollToSection !== null && scrollableSections.map(({name, path}, key: number) => (
-            <LinkLi key={key}>
-              {highlight == key ? (
-                <HighlightedAnchorLink onClick={() => scrollToSection(key, path)}>
-                  <span>{name}</span>
-                </HighlightedAnchorLink>
-              ) : (
-                <AnchorLink onClick={() => scrollToSection(key, path)}>
-                  <span>{name}</span>
-                </AnchorLink>
-              )}
-            </LinkLi>
-          ))}
+          <ScrollableSections
+            highlight={highlight}
+            mode={getRenderingMode({scrollToSection, isBrowser})}
+            scrollToSection={scrollToSection}
+            scrollableSections={scrollableSections}
+          />
           <Spacer>|</Spacer>
           {additionalSections.map(({name, path}, key: number) => (
             <LinkLi key={key}>
@@ -99,6 +79,90 @@ const Navigation: React.FC<Props> = ({
       </NavSocial>
     </NavWrapper>
   )
+}
+
+type PreRender = {
+  mode: 'pre-render'
+  scrollableSections: ScrollableSections
+  highlight: number
+}
+
+type Landing = {
+  mode:'landing'
+  scrollableSections: ScrollableSections
+  highlight: number
+  scrollToSection?: Function
+  // isBrowser: boolean
+}
+
+type ScrollableProps = PreRender | Landing
+
+function getRenderingMode({scrollToSection, isBrowser}){
+  if(scrollToSection !== undefined){    
+    return 'landing'
+  }
+  // if(!isBrowser || scrollToSection == null){
+  //   return 'pre-render'
+  // }
+  return 'pre-render'
+}
+
+// Gatsby wasn't cooperating so I had to make this slightly over-complicated thing.
+// Basically the pre-rendering wasn't rendering anything at all for ScrollableSections
+// FIXME can definetly simplify with a nice if else inline, if this works in no-js
+const ScrollableSections: React.FC<ScrollableProps> = (props) => {
+  switch(props.mode){
+    case 'landing': {
+      const {
+        scrollableSections,
+        highlight,
+        // isBrowser,
+        scrollToSection,
+      } = props
+      return (
+        <>
+          {/* scrollToSection is always defined, but due to it being set as ?, this is needed */}
+          {scrollToSection && scrollableSections.map(({name, path}, key: number) => (
+            <LinkLi key={key}>
+              {highlight == key ? (
+                <HighlightedAnchorLink onClick={() => scrollToSection(key, path)}>
+                  <span>{name}</span>
+                </HighlightedAnchorLink>
+              ) : (
+                <AnchorLink onClick={() => scrollToSection(key, path)}>
+                  <span>{name}</span>
+                </AnchorLink>
+              )}
+            </LinkLi>
+          ))}
+        </>
+      )
+    }
+    // pre-rendering & no-js cases 
+    default: {
+      const {
+        scrollableSections,
+        highlight,
+      } = props      
+      return (
+        <>
+          {scrollableSections.map(({name, path}, key: number) => (
+            <LinkLi key={key}>
+              {highlight == key ? (
+                <HighlightedNavLink to={path}>
+                  <span>{name}</span>
+                </HighlightedNavLink>
+              ) : (
+                <NavLink to={path}>
+                  <span>{name}</span>
+                </NavLink>
+              )}
+            </LinkLi>
+          ))}
+        </>
+      )
+    }
+  }
 }
 
 export default Navigation;
