@@ -84,7 +84,9 @@ export const HighlightedNavLink = styled(Link)`${highlighted}`
 export const AnchorLink = styled.a`${navlink}`
 export const HighlightedAnchorLink = styled.a`${highlighted}`
 
-export const Spacer = styled.span`
+export const Spacer = styled.li`
+  display: inline;
+  text-decoration: none;
   padding: 0 20px 0 0;
   color: ${theme.fg.blueishGray};
 `

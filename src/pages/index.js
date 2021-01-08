@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, Fragment, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
@@ -16,7 +16,7 @@ const scrollableSections = [
     name:"Home",
     path:"#home",
     Component: Hero,
-    props:{
+    props: {
       name: "Samuele",
       title: "Full-Stack Developer",
       paragraph: "I build Bespoke webapps using React and Nodejs for Individuals and Businesses",
@@ -50,7 +50,8 @@ const additionalSections = [
   },
 ]
 
-const LandingPage = ({ location }) => {
+const LandingPage = ({ location, test }) => {
+  console.log(test)
   const data = useStaticQuery(graphql`
     query SpaQuery {
       site {
@@ -58,48 +59,8 @@ const LandingPage = ({ location }) => {
           title
         }
       }
-      github: file(absolutePath: { regex: "/github.png/" }) {
-        childImageSharp {
-          fixed(width: 30, height: 30, quality: 95) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      linkedin: file(absolutePath: { regex: "/linkedin.png/" }) {
-        childImageSharp {
-          fixed(width: 30, height: 30, quality: 95) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      resume: file(absolutePath: { regex: "/pdf.png/" }) {
-        childImageSharp {
-          fixed(width: 30, height: 30, quality: 95) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
     }
   `)
-
-  //TODO Move to gatsby-config site meta data, and modify the query above to include the info stored in the side meta
-  const social = [
-    {
-      name: 'Github',
-      url: 'https://github.com/metruzanca',
-      icon: data?.github?.childImageSharp?.fixed,
-    },
-    {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/samuelz/',
-      icon: data?.linkedin?.childImageSharp?.fixed,
-    },
-    {
-      name: 'Resume',
-      url: '/resume.pdf',
-      icon: data?.resume?.childImageSharp?.fixed,
-    },
-  ]
 
   const [highlight, setHighlight] = useState(0)
 
@@ -118,13 +79,19 @@ const LandingPage = ({ location }) => {
     window.history.pushState({}, window.title, path);
   }
 
+  useEffect(() => {
+    if(location.hash){
+      const key = scrollableSections.findIndex( route => route.path === location.hash)
+      scrollToSection(key, location.hash)
+    }
+  }, [])
+
   return (
-    <div style={{scrollBehavior:'smooth'}}>
+    <Fragment>
       <SEO title="ZBest.Dev - Samuel's Blog and Portfolio" />
       <SpaNav
         scrollableSections={scrollableSections}
         additionalSections={additionalSections}
-        social={social}
         setHighlight={setHighlight}
         highlight={highlight}
         scrollToSection={scrollToSection}
@@ -142,7 +109,7 @@ const LandingPage = ({ location }) => {
       <footer>
         I am Footer
       </footer>
-    </div>
+    </Fragment>
   )
 }
 

@@ -1,9 +1,7 @@
 import React from "react"
-import Image, { FixedObject } from "gatsby-image"
 
-import { jump } from '../../utils'
 import {Highlight} from '../../style'
-
+import SocialIcons from './SocialIcon'
 import {
   NavWrapper,
   NavLogo,
@@ -12,7 +10,6 @@ import {
   NavSocial,
   Ul,
   LinkLi,
-  SocialLi,
   NavLink,
   HighlightedNavLink,
   AnchorLink,
@@ -22,40 +19,34 @@ import {
 // TODO itemProp for Link and span
 // Are they just an accessibility thing or are they specific to Gatsby?
 
-// ?.github?.childImageSharp?.fixed,
+export type ScrollableSections = {
+  name: string
+  path: string
+}[]
+
+export type AdditionalSections = {
+  name: string
+  path: string
+}[]
 
 interface Props {
-  scrollableSections: {
-    name: string
-    path: string
-  }[]
-  additionalSections: {
-    name: string
-    path: string
-  }[]
-  social: {
-    name: string
-    url: string
-    icon: {
-      childImageSharp: {
-        fixed: FixedObject
-      }
-    }
-  }[]
-  setHighlight:(index:number)=>void
+  scrollableSections: ScrollableSections
+  additionalSections: AdditionalSections
+  // setHighlight:(index:number)=>void
   highlight:number
-  scrollToSection: Function
+  scrollToSection?: Function
 }
+
+const isBrowser = typeof window !== 'undefined'
 
 const Navigation: React.FC<Props> = ({
   scrollableSections,
   additionalSections,
-  social,
-  setHighlight,
+  // setHighlight,
   highlight,
-  scrollToSection,
+  scrollToSection = null,
 }) => {
-  console.log(social)
+
   return (
     <NavWrapper>
       <NavLogo>
@@ -63,7 +54,20 @@ const Navigation: React.FC<Props> = ({
       </NavLogo>
       <Nav>
         <Ul>
-          {scrollableSections.map(({name, path}, key: number) => (
+          {!isBrowser || scrollToSection === null && scrollableSections.map(({name, path}, key: number) => (
+            <LinkLi key={key}>
+              {highlight == key ? (
+                <HighlightedNavLink to={path}>
+                  <span>{name}</span>
+                </HighlightedNavLink>
+              ) : (
+                <NavLink to={path}>
+                  <span>{name}</span>
+                </NavLink>
+              )}
+            </LinkLi>
+          ))}
+          {scrollToSection !== null && scrollableSections.map(({name, path}, key: number) => (
             <LinkLi key={key}>
               {highlight == key ? (
                 <HighlightedAnchorLink onClick={() => scrollToSection(key, path)}>
@@ -80,11 +84,11 @@ const Navigation: React.FC<Props> = ({
           {additionalSections.map(({name, path}, key: number) => (
             <LinkLi key={key}>
               {highlight == key + scrollableSections.length ? (
-                <HighlightedNavLink to={path} onClick={() => setHighlight(key)}>
+                <HighlightedNavLink to={path}>
                   <span>{name}</span>
                 </HighlightedNavLink>
               ) : (
-                <NavLink to={path} onClick={() => setHighlight(key)}>
+                <NavLink to={path}>
                   <span>{name}</span>
                 </NavLink>
               )}
@@ -93,15 +97,7 @@ const Navigation: React.FC<Props> = ({
         </Ul>
       </Nav>
       <NavSocial>
-        <Ul>
-          {/* {social.map(({name, url, icon}, key: number) => (
-            <SocialLi key={key}>
-              <a href={url} target={'_blank'} >
-                <Image alt={name} fixed={icon}/>
-              </a>
-            </SocialLi>
-          ))} */}
-        </Ul>
+          <SocialIcons/>
       </NavSocial>
     </NavWrapper>
   )
