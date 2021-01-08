@@ -8,3 +8,8 @@ import "./src/style/style.css"
 
 // Highlighting for code blocks
 import "./src/style/prism-atom-dark.css"
+
+
+export const onClientEntry = () => {
+  window.isBrowser = true
+}

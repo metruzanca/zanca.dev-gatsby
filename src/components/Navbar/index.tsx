@@ -32,20 +32,18 @@ export type AdditionalSections = {
 interface Props {
   scrollableSections: ScrollableSections
   additionalSections: AdditionalSections
-  // setHighlight:(index:number)=>void
   highlight:number
   scrollToSection?: Function
 }
 
-const isBrowser = typeof window !== 'undefined'
 
 const Navigation: React.FC<Props> = ({
   scrollableSections,
   additionalSections,
-  // setHighlight,
   highlight,
   scrollToSection = null,
 }) => {
+  const isBrowser = window.isBrowser || false
 
   return (
     <NavWrapper>
@@ -54,7 +52,7 @@ const Navigation: React.FC<Props> = ({
       </NavLogo>
       <Nav>
         <Ul>
-          {!isBrowser || scrollToSection === null && scrollableSections.map(({name, path}, key: number) => (
+          {!isBrowser || scrollToSection == null && scrollableSections.map(({name, path}, key: number) => (
             <LinkLi key={key}>
               {highlight == key ? (
                 <HighlightedNavLink to={path}>
