@@ -11,5 +11,5 @@ import "./src/style/prism-atom-dark.css"
 
 
 export const onClientEntry = () => {
-  // window.isBrowser = true
+  window.isBrowserWithJavascript = true
 }

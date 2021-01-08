@@ -113,7 +113,7 @@ function getRenderingMode(scrollToSection){
   if(scrollToSection !== undefined){    
     return RenderModes.landing
   }
-  if(scrollToSection == undefined){
+  if(window?.isBrowserWithJavascript){
     return RenderModes.pre_render_landing
   }
   return RenderModes.pre_render_blog
@@ -128,7 +128,6 @@ const ScrollableSections: React.FC<ScrollableProps> = (props) => {
       const {
         scrollableSections,
         highlight,
-        // isBrowser,
         scrollToSection,
       } = props
       return (
