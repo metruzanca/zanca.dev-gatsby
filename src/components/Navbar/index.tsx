@@ -81,30 +81,42 @@ const Navigation: React.FC<Props> = ({
   )
 }
 
-type PreRender = {
-  mode: 'pre-render'
+type PreRenderBlog = {
+  mode: RenderModes.pre_render_blog
+  scrollableSections: ScrollableSections
+  highlight: number
+}
+
+type PreRenderLanding = {
+  mode: RenderModes.pre_render_landing
   scrollableSections: ScrollableSections
   highlight: number
 }
 
 type Landing = {
-  mode:'landing'
+  mode: RenderModes.landing
   scrollableSections: ScrollableSections
   highlight: number
   scrollToSection?: Function
   // isBrowser: boolean
 }
 
-type ScrollableProps = PreRender | Landing
+type ScrollableProps = PreRenderBlog | PreRenderLanding | Landing
+
+enum RenderModes {
+  landing = 'landing',
+  pre_render_landing = 'pre_render_landing',
+  pre_render_blog = 'pre_render_blog',
+}
 
 function getRenderingMode(scrollToSection){
   if(scrollToSection !== undefined){    
-    return 'landing'
+    return RenderModes.landing
   }
-  // if(!isBrowser || scrollToSection == null){
-  //   return 'pre-render'
-  // }
-  return 'pre-render'
+  if(scrollToSection == undefined){
+    return RenderModes.pre_render_landing
+  }
+  return RenderModes.pre_render_blog
 }
 
 // Gatsby wasn't cooperating so I had to make this slightly over-complicated thing.
@@ -112,7 +124,7 @@ function getRenderingMode(scrollToSection){
 // FIXME can definetly simplify with a nice if else inline, if this works in no-js
 const ScrollableSections: React.FC<ScrollableProps> = (props) => {
   switch(props.mode){
-    case 'landing': {
+    case RenderModes.landing: {
       const {
         scrollableSections,
         highlight,
@@ -139,6 +151,8 @@ const ScrollableSections: React.FC<ScrollableProps> = (props) => {
       )
     }
     // pre-rendering & no-js cases 
+    case RenderModes.pre_render_landing:
+    case RenderModes.pre_render_blog:
     default: {
       const {
         scrollableSections,
