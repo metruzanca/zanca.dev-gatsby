@@ -43,7 +43,7 @@ const Navigation: React.FC<Props> = ({
   highlight,
   scrollToSection = undefined,
 }) => {
-  const isBrowser = window.isBrowser || false
+  // const isBrowser = window.isBrowser || false
 
   return (
     <NavWrapper>
@@ -54,7 +54,7 @@ const Navigation: React.FC<Props> = ({
         <Ul>
           <ScrollableSections
             highlight={highlight}
-            mode={getRenderingMode({scrollToSection, isBrowser})}
+            mode={getRenderingMode(scrollToSection)}
             scrollToSection={scrollToSection}
             scrollableSections={scrollableSections}
           />
@@ -97,7 +97,7 @@ type Landing = {
 
 type ScrollableProps = PreRender | Landing
 
-function getRenderingMode({scrollToSection, isBrowser}){
+function getRenderingMode(scrollToSection){
   if(scrollToSection !== undefined){    
     return 'landing'
   }
