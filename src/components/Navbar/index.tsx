@@ -163,13 +163,13 @@ const ScrollableSections: React.FC<ScrollableProps> = (props) => {
           {scrollableSections.map(({name, path}, key: number) => (
             <LinkLi key={key}>
               {highlight == key ? (
-                <HighlightedNavLink to={path}>
+                <HighlightedAnchorLink href={path}>
                   <span>{name}</span>
-                </HighlightedNavLink>
+                </HighlightedAnchorLink>
               ) : (
-                <NavLink to={path}>
+                <AnchorLink href={path}>
                   <span>{name}</span>
-                </NavLink>
+                </AnchorLink>
               )}
             </LinkLi>
           ))}
