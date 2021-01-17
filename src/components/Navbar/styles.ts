@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components'
 
 import {theme, Link, HeadingCSS, darken} from '../../style'
 
-// Logo(ZbestDev)      Nav[Home, Projects, Services, About, Contact, Blog]     Social[Linkedin, GitHub, Resume]
+// Logo(zancadev)      Nav[Home, Projects, Services, About, Contact, Blog]     Social[Linkedin, GitHub, Resume]
 
 export const NavWrapper = styled.header`
   display: inline;

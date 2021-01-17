@@ -48,7 +48,7 @@ const Navigation: React.FC<Props> = ({
   return (
     <NavWrapper>
       <NavLogo>
-        <AnchorLink href="/"><Highlight>{'Z'}</Highlight>{'Best.Dev'}</AnchorLink>
+        <AnchorLink href="/"><Highlight>{'Z'}</Highlight>{'anca.Dev'}</AnchorLink>
       </NavLogo>
       <Nav>
         <Ul>

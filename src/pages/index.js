@@ -143,7 +143,7 @@ const LandingPage = ({ location }) => {
 
   return (
     <Fragment>
-      <SEO title="ZBest.Dev - Samuel's Blog and Portfolio" />
+      <SEO title="Zanca.Dev - Samuel's Blog and Portfolio" />
       <SpaNav
         scrollableSections={scrollableSections}
         additionalSections={additionalSections}

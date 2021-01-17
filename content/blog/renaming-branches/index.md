@@ -12,10 +12,10 @@ tags:
 _TL;DR below_
 
 Today I wanted to move my `metruzanca/metruzanca.github.io` to a different repository for two reasons:
-- First, so that I could host my portfolio without all my other gh-pages defaulting to `zbest.dev/<repo name>`
+- First, so that I could host my portfolio without all my other gh-pages defaulting to `zanca.dev/<repo name>`
 - I don't like master being the only folder allowed for gh-pages and instead having a dev repo in place of master.
 
-So I decided to move clone my repo and then push it to a new repository `metruzanca/zbest.dev`.
+So I decided to move clone my repo and then push it to a new repository `metruzanca/zanca.dev`.
 
 After pulling i needed to rename a few things:
 ```

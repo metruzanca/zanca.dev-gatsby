@@ -1,8 +1,8 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://zbest.dev">
+  <a href="https://Zanca.dev">
     <!-- TODO Put live URL once this branch merges -->
-    <img alt="zbestdev" src="https://raw.githubusercontent.com/metruzanca/zbest_dev/feature/landing-page/static/ZBest-dev.svg" width="60" />
+    <img alt="zanca.dev logo" src="https://raw.githubusercontent.com/metruzanca/zbest_dev/feature/landing-page/static/ZBest-dev.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
@@ -53,7 +53,7 @@ Custom Features:
 - [ ] Snazzy Work Experience section
 - [ ] Even snazzier globe animation to show off work locations
 - [ ] Pull github pinned projects for featured projects.
-- [ ] Pull github repositories that have the repo.website is set to `https://zbest.dev/projects/name-of-repository` and generate a site page based on the repository.
+- [ ] Pull github repositories that have the repo.website is set to `https://zanca.dev/projects/name-of-repository` and generate a site page based on the repository.
   - Make a workflow for these repos where if their readme gets updated, this triggers a netlify rebuild via netlify build webhook.
 - [ ] Special tags on projects for `Work related projets`. These would need to have their own site post probably as I can't make repos for these.
   - These should also show up in Work Experience.
