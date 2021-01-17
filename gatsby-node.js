@@ -76,6 +76,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
+// TODO Look into editing the types in here
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
 
