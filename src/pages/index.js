@@ -8,8 +8,53 @@ import Hero from "../components/Hero"
 import Projects from "../components/Projects"
 import About from "../components/About"
 import Contact from "../components/Contact"
+import Experience from "../components/WorkExperience"
 
-import { jump } from '../utils'
+import { jump, isDevelopment } from '../utils'
+
+const experience = [
+  {
+    title:'Frontend Developer',
+    company:'DecHit',
+    start:'11/2/20',
+    // end:'end1',
+    // summary:'summary1',
+    bullets:[
+      "Training 3 previously PHP developers in use of React, React-Router, Redux and Redux-Saga.",
+      "Currently transitioning react mobile app from cordova to react native.",
+      "Introduced  refactors  to  bring  the  codebase  up  to  modern  javascript(ES9)  and  react  standards  increasingboth readability and some cases performance.",
+      " Introducing greater unit testing.",
+    ],
+  },
+  {
+    title:'Full-Stack Developer',
+    company:'Mia-Platform',
+    start:'07/8/20',
+    end:'10/16/20',
+    // summary:'summary2',
+    bullets:[
+      "Worked on a cross-functional team, BURTON, to develop and deploy API, web dashboards and native mobileapps for a B2B client Foorban Srl.",
+      "Developed a microservice in Kotlin using the Ktor framework, Jackson and Retrofit2 following the BFF andSaga patterns.",
+      "Developed two React dashboards using data from the previously mentioned kotlin API and Mia’s customCMS.",
+      "Developed a PDF Microservice that allows the use of HTML as a familiar DSL for creating Shipping labels,receipts and custom size invoices.",
+      "Prototyped a React app for live previewing of the PDFs using the Monaco-Editor.",
+    ],
+  },
+  {
+    title:'Software Engineer',
+    company:'TXT e-Solutions',
+    start:'09/15/19',
+    end:'07/8/20',
+    // summary:'summary3',
+    bullets:[
+      "Acted as a point of reference/mentor for developers learning:  Nodejs, React.js, Redux.js & Typescript.",
+      "Lead the development of a React/Typescript web control panel for operating Flight Simulators via remotelyvia tablet for Leonardo SpA.",
+      "Maintained c# two Xamarin Mobile apps used by ITT Inc in Automotive industry for collecting diagnosticbreak data transfered over wifi and low power bluetooth.",
+      "Developed a c# app for collecting and processing flight data in collaboration with IATA Turbulence awarecampaign to reduce fuel costs and flight *bumpiness*.",
+      "Developed a c# WPF Simulator for training the proper use of the ADRIAN system.",
+    ],
+  }
+]
 
 const scrollableSections = [
   {
@@ -22,10 +67,18 @@ const scrollableSections = [
       paragraph: "I build Bespoke webapps using React and Nodejs for Individuals and Businesses",
     }
   },
+  // {
+  //   name:"Projects",
+  //   path:"#projects",
+  //   Component: Projects,
+  // },
   {
-    name:"Projects",
-    path:"#projects",
-    Component: Projects,
+    name:"Experience",
+    path:"#experience",
+    Component: Experience,
+    props:{
+      experience,
+    },
   },
   {
     name:"About",
@@ -33,7 +86,7 @@ const scrollableSections = [
     Component: About,
     props: {
       summary: "",
-      skills:[],
+      skills:["javascript", "Typescript", "etc", "etc"],
     }
   },
   {
@@ -50,8 +103,9 @@ const additionalSections = [
   },
 ]
 
-const LandingPage = ({ location, test }) => {
-  console.log(test)
+
+
+const LandingPage = ({ location }) => {
   const data = useStaticQuery(graphql`
     query SpaQuery {
       site {
@@ -63,8 +117,6 @@ const LandingPage = ({ location, test }) => {
   `)
 
   const [highlight, setHighlight] = useState(0)
-
-  //FIXME Refactor the way this useState's props get passed down.
   const [isObserving, setIsObserving] = useState(false)
 
   function scrollToSection(key, path){
@@ -79,12 +131,15 @@ const LandingPage = ({ location, test }) => {
     window.history.pushState({}, window.title, path);
   }
 
+  // I want this to run only once and after the very first render of this page.
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if(location.hash){
       const key = scrollableSections.findIndex( route => route.path === location.hash)
       scrollToSection(key, location.hash)
     }
   }, [])
+  /* eslint-enable */
 
   return (
     <Fragment>
@@ -97,14 +152,19 @@ const LandingPage = ({ location, test }) => {
         scrollToSection={scrollToSection}
       />
       {scrollableSections
-        .map(({Component, path, props}, key) => (
-          <Component
+        .map(({Component, path, props}, key) => {
+          const section = <Component
+            key={key}
             handleInView={()=> handleInView(key, path)}
             scrollId={path.substr(1)}
             isObserving={isObserving}
             {...props}
           />
-        ))
+          if(isDevelopment && section.type.name !== ""){
+            console.warn(`Path: ${path} is not Observed`)
+          }
+          return section
+        })
       }
       <footer>
         I am Footer

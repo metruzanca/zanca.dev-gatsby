@@ -8,6 +8,8 @@ const sans = `
 
 const serif = `"Merriweather", "Georgia", Cambria, "Times New Roman", Times, serif`
 
+const mono = `"SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace`
+
 export default {
   bg:{
     primary:'#2f324c',
@@ -38,6 +40,7 @@ export default {
   font:{
     body: serif,
     Heading: sans,
+    mono,
     // 1.200 Minor Third Type Scale https://type-scale.com/
     Size_0: '0.833rem',
     Size_1: '1rem',

@@ -3,20 +3,22 @@ import React from "react"
 import { SectionWrapper, Heading } from './styles'
 
 interface Props {
-  title:string
-  alt?:boolean
+  title: string
+  alt?: boolean
+  id?: string
 }
 
 const Section: React.FC<Props> = ({
   title,
   children,
   alt = false,
+  id,
 }) => {
 
   return (
-    <SectionWrapper>
+    <SectionWrapper id={id}>
       <Heading alt={alt}>{title}</Heading>
-      <div style={{border:'1px solid lime'}}>
+      <div>
         {children}
       </div>
     </SectionWrapper>
