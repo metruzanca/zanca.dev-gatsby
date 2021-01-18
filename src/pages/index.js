@@ -138,7 +138,7 @@ const LandingPage = ({ location }) => {
   `)
 
   const [highlight, setHighlight] = useState(0)
-  const [isObserving, setIsObserving] = useState(false)
+  const [isObserving, setIsObserving] = useState(true)
 
   function scrollToSection(key, path){
     setHighlight(key)
