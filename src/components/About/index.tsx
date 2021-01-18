@@ -7,18 +7,22 @@ import {Skills} from './components'
 import {Grid, Summary} from './styles'
 
 interface Props {
+  summary: string
+  skills: string[]
 }
 
 const About: React.FC<Props> = ({
+  summary,
+  skills,
 }) => {
 
   return (
     <Section title={"About"}>
       <Grid>
         <Summary>
-          Professional Summary etc etc etc Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam ad provident optio vel distinctio ipsam illo eius suscipit odit, quia officiis veniam rem quos est, obcaecati voluptas, soluta natus expedita!
+          {summary}
         </Summary>
-        <Skills skills={["Nodejs", "React", "javascript", "Typescript"]}/>
+        <Skills skills={skills}/>
       </Grid>
     </Section>
   )

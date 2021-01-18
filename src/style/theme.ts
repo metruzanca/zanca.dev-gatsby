@@ -20,7 +20,7 @@ export default {
     accent:'#f7e13a',
     links:'#6883fd',
     linksVisited:'#8d77ff',
-    blueishGray:'#75799a',
+    blueishGray:'#8892b0',
   },
   spacing_0: '0',
   spacing_1: '0.25rem',
@@ -54,4 +54,5 @@ export default {
   nav:{
     height:80
   },
+  ctaRadius: '2px',
 }

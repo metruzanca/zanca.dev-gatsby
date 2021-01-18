@@ -1,4 +1,4 @@
-/* CSS Custom Properties Definitions */
+/* FIXME Remove this file */
 
 :root {
   --maxWidth-none: "none";
@@ -109,6 +109,7 @@ footer {
   padding: var(--spacing-6) var(--spacing-0);
 }
 
+/* Take from footer styles */
 hr {
   background: var(--color-accent);
   height: 1px;

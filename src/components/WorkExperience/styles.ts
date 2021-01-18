@@ -9,6 +9,13 @@ export const CompanyLI = styled.li`
   white-space: nowrap;
   list-style: none;
   font-family: ${theme.font.mono};
+  cursor: pointer;
+  & > label {
+    cursor: pointer;
+  }
+  &:hover{
+    color: ${theme.fg.accent};
+  }
 `
 
 export const H3 = styled.h3`
@@ -18,12 +25,14 @@ export const H3 = styled.h3`
 
 export const H6 = styled.h6`
   margin-top: 1rem;
+  color: ${theme.fg.blueishGray};
 `
 
 export const BulletLI = styled.li`
   list-style: none;
   position: relative;
   padding-left: 30px;
+  color: ${theme.fg.blueishGray};
 
   ::before{
     content: "▹";

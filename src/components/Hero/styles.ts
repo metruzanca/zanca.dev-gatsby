@@ -32,12 +32,13 @@ export const CallToAction = styled.button`
     color: ${theme.fg.primary};
     text-decoration: none;
   }
+  cursor: pointer;
 
   padding: 0 30px;
   height: 50px;
 
   border: none;
-  border-radius:2px;
+  border-radius: ${theme.ctaRadius};
   background-color: ${theme.fg.links};
   &:hover{
     ${darken(.2)}

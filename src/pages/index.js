@@ -9,6 +9,7 @@ import Projects from "../components/Projects"
 import About from "../components/About"
 import Contact from "../components/Contact"
 import Experience from "../components/WorkExperience"
+import Footer from "../components/Footer"
 
 import { jump, isDevelopment } from '../utils'
 
@@ -65,6 +66,7 @@ const scrollableSections = [
       name: "Samuele",
       title: "Full-Stack Developer",
       paragraph: "I build Bespoke webapps using React and Nodejs for Individuals and Businesses",
+      ctaHash: "#experience"
     }
   },
   // {
@@ -80,20 +82,20 @@ const scrollableSections = [
       experience,
     },
   },
-  {
-    name:"About",
-    path:"#about",
-    Component: About,
-    props: {
-      summary: "",
-      skills:["javascript", "Typescript", "etc", "etc"],
-    }
-  },
-  {
-    name:"Contact",
-    path:"#contact",
-    Component: Contact,
-  }
+  // {
+  //   name:"About",
+  //   path:"#about",
+  //   Component: About,
+  //   props: {
+  //     summary: "",
+  //     skills:["javascript", "Typescript", "etc", "etc"],
+  //   }
+  // },
+  // {
+  //   name:"Contact",
+  //   path:"#contact",
+  //   Component: Contact,
+  // }
 ]
 
 const additionalSections = [
@@ -113,6 +115,25 @@ const LandingPage = ({ location }) => {
           title
         }
       }
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        nodes {
+          excerpt
+          fields {
+            slug
+            readingTime {
+              text    # ‘1 min read'
+              # minutes # '1'
+              # time    # '60000'
+              # words   # 200
+            }
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
+          }
+        }
+      }
     }
   `)
 
@@ -130,6 +151,9 @@ const LandingPage = ({ location }) => {
     // TODO find a way to do this with gatsby's router
     window.history.pushState({}, window.title, path);
   }
+
+  // TODO Change how this is passed to Hero
+  scrollableSections[0].props.scroll = () => scrollToSection(1, "#experience")
 
   // I want this to run only once and after the very first render of this page.
   /* eslint-disable react-hooks/exhaustive-deps */
@@ -166,9 +190,7 @@ const LandingPage = ({ location }) => {
           return section
         })
       }
-      <footer>
-        I am Footer
-      </footer>
+      <Footer scroll={() => scrollToSection(0, "#home")} posts={data.allMarkdownRemark.nodes}/>
     </Fragment>
   )
 }

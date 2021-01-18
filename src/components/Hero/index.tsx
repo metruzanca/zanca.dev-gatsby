@@ -9,15 +9,19 @@ import {HeroSection, HeroHeading, HeroParagraph, CallToAction} from './styles'
 
 
 interface Props {
-  name:string
-  title:string
-  paragraph:string
+  name: string
+  title: string
+  paragraph: string
+  ctaHash: string
+  scroll: () => void
 }
 
 const Hero: React.FC<Props> = ({
   name,
   title,
   paragraph,
+  ctaHash,
+  scroll,
 }) => {
 
   return (
@@ -30,12 +34,12 @@ const Hero: React.FC<Props> = ({
         <HeroParagraph>
           {paragraph}
         </HeroParagraph>
-        <Link to="#projects">
+        <a href={ctaHash} onClick={scroll}>
           <CallToAction>
             Previous Work
           </CallToAction>
-        </Link>
-        <ScrollIndicator href="#projects" onClick={()=> console.log("scroll clicked")}/>
+        </a>
+        <ScrollIndicator href={ctaHash} onClick={scroll}/>
       </HeroSection>
   )
 }

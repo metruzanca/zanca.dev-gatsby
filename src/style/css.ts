@@ -28,3 +28,29 @@ export const lighten = (value:number) => css`
     rgba(255,255,255,${value}) 0%,
     rgba(255,255,255,${value}) 100%);
 `
+
+/**
+ * Darkens a given Hex color value by a set percentage
+ * @param value 0-1 value to darken
+ */
+export function darkenHex(hex:string, value:number){
+  return hex + (Math.ceil(value*255)).toString(16);
+}
+
+/**
+ * Lightens a given Hex color value by a set percentage
+ * @param value 0-1 value to lighten
+ */
+export function lightenHex(hex:string, value:number){
+  return hex + (100-Math.ceil(value*255)).toString(16);
+}
+
+// After many a workarounds, heres some actual code to do EXACTLY WHAT YOU WANTED, Idiot.
+
+/**
+ * Darkens / Lightens a given Hex color value by a set percentage
+ * @param color HEX color value
+ * @param percent 0-1 value to darken (negative) / lighten (positive)
+ */
+
+// Still not found something that works
