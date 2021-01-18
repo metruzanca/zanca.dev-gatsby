@@ -11,7 +11,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="ZBest.Dev - Samuel's Blog and Portfolio" />
+      <SEO title="Zanca.Dev - Samuel's Blog and Portfolio" />
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {

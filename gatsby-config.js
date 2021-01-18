@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `ZBest.Dev`,
+    title: `Zanca.Dev`,
     author: {
       name: `Samuele Zanca`,
       summary: `I build cool stuff, mostly with Typescript.`,
     },
     description: `Personal Blog & Portfolio by Samuele Zanca`,
-    siteUrl: `https://zbest.dev/`,
+    siteUrl: `https://zanca.dev/`,
     social: {
       twitter: `metruzanca`,
       linkedin: `samuelz`,
@@ -61,8 +61,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `ZBest.Dev`,
-        short_name: `Zbestdev`,
+        name: `Zanca.Dev`,
+        short_name: `ZancaDev`,
         start_url: `/`,
         background_color: `#353b55`,
         theme_color: `#f7e13a`,
