@@ -8,7 +8,7 @@ export const SectionWrapper = styled.section`
 `
 
 interface HeadingProps {
-  alt?:boolean
+  alternate?:boolean
 }
 
 const headingLine = css`
@@ -23,5 +23,5 @@ const headingLine = css`
 
 export const Heading = styled.h2<HeadingProps>`
   color: ${theme.fg.links};
-  ${props => !props.alt && headingLine}
+  ${props => !props.alternate && headingLine}
 `

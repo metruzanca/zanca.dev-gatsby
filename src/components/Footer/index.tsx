@@ -63,8 +63,8 @@ const Footer: React.FC<Props> = ({
           </RotatedText>
         </RotatedTextContainer>
         <FooterSection header={'Latest Blog Posts'}>
-          {posts.slice(0,2).map(post => (
-            <Post>
+          {posts.slice(0,2).map((post, key) => (
+            <Post key={key}>
               <PostTitle>
                 <Link to={`/blog` + post.fields.slug} itemProp="url">
                   <span itemProp="headline">{post.frontmatter.title}</span>

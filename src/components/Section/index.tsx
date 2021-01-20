@@ -17,7 +17,7 @@ const Section: React.FC<Props> = ({
 
   return (
     <SectionWrapper id={id}>
-      <Heading alt={alt}>{title}</Heading>
+      <Heading alternate={alt}>{title}</Heading>
       <div>
         {children}
       </div>

@@ -43,6 +43,7 @@ const WorkExperience: React.FC<Props> = ({
   for(const [key, org] of experience.entries()){
     radios.push(
       <input
+        key={key}
         id={`tab${key}`}
         type="radio"
         name={'tabs'}
@@ -52,13 +53,13 @@ const WorkExperience: React.FC<Props> = ({
     )
 
     companies.push(
-      <CompanyLI className={`tab${key}`}>
+      <CompanyLI key={key} className={`tab${key}`}>
         <label key={key} htmlFor={`tab${key}`}>{org.company}</label>
       </CompanyLI>
     )
 
     jobs.push(
-      <div className={`tab${key}`}>
+      <div key={key} className={`tab${key}`}>
         <H3>{org.title} <Highlight>@ {org.company}</Highlight></H3>
         <H6>{org.start && `${org.start} - ${org.end || 'present'}`}</H6>
         {org.summary}
