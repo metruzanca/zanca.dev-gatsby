@@ -14,6 +14,9 @@ import {
   // HighlightedNavLink,
   AnchorLink,
   HighlightedAnchorLink,
+  MenuButton,
+  MenuIcon,
+  Hamburger,
 } from './styles'
 
 // TODO itemProp for Link and span
@@ -50,6 +53,10 @@ const Navigation: React.FC<Props> = ({
       <NavLogo>
         <AnchorLink href="/"><Highlight>{'Z'}</Highlight>{'anca.Dev'}</AnchorLink>
       </NavLogo>
+      {/* <MenuButton type="checkbox" id="hamburger-btn"/>
+      <MenuIcon htmlFor="hamburger-btn">
+        <Hamburger/>
+      </MenuIcon> */}
       <Nav>
         <Ul>
           {CSRLandingPage && scrollToSection !== undefined ? 

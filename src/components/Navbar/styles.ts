@@ -1,7 +1,6 @@
-import React from "react"
 import styled, {css} from 'styled-components'
 
-import {theme, Link, HeadingCSS, darken} from '../../style'
+import {theme, Link, HeadingCSS, darken, Breakpoints, up} from '../../style'
 
 // Logo(zancadev)      Nav[Home, Projects, Services, About, Contact, Blog]     Social[Linkedin, GitHub, Resume]
 
@@ -77,6 +76,8 @@ const highlighted = css`
     color: ${theme.fg.accent};
   }
 `
+// https://codepen.io/pen/?editors=1100
+// https://github.com/bchiang7/v4/blob/main/src/components/menu.js
 
 export const NavLink = styled(Link)`${navlink}`
 export const HighlightedNavLink = styled(Link)`${highlighted}`
@@ -90,3 +91,58 @@ export const Spacer = styled.li`
   padding: 0 20px 0 0;
   color: ${theme.fg.blueishGray};
 `
+
+export const MenuIcon = styled.label`
+
+`
+
+export const Hamburger = styled.span`
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background-color .2s ease-out;
+  width: 18px;
+
+  &:before, &:after {
+    background: red;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+  }
+
+  ${up(Breakpoints.small)} {
+    display: none;
+  }
+`
+
+export const MenuButton = styled.input`
+  display: none;
+
+  &:checked ~ ${MenuIcon} ${Hamburger} {
+    background-color: transparent;
+  }
+
+  &:checked ~ ${MenuIcon} ${Hamburger}:before {
+    transform: rotate(-45deg);
+    top:0;
+  }
+
+  &:checked ~ ${MenuIcon} ${Hamburger}:after {
+    transform: rotate(45deg);
+    top:0;
+  }
+`
+
+
+
+/*
+  <MenuButton/>
+  <MenuIcon>
+    <Hamburger></Hamburger>
+  </MenuIcon>
+
+*/

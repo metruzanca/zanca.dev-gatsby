@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import {theme} from './style'
+import {theme, GlobalStyle} from './style'
 
 export default function HTML(props) {
   return (
@@ -12,10 +12,11 @@ export default function HTML(props) {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+          />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes} style={{backgroundColor: theme.bg.primary}}>
+        <GlobalStyle/>
         {props.preBodyComponents}
         <div
           key={`body`}
