@@ -7,7 +7,7 @@ import {
   MouseMessage,
 } from './styles'
 
-import { Center } from '../../style'
+import { CenterDiv } from '../../style'
 
 interface Props {
   href:string
@@ -19,14 +19,14 @@ const ScrollIndicator: React.FC<Props> = ({
   href,
 }) => {
   return (
-    <Center>
+    <CenterDiv>
       <MouseScroll href={href} onClick={onClick}> 
         <Mouse>
           <MouseWheel/>
         </Mouse>
         <MouseMessage>scroll</MouseMessage> 
       </MouseScroll>
-    </Center>
+    </CenterDiv>
   )
 }
 

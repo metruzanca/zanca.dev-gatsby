@@ -16,7 +16,6 @@ export default function HTML(props) {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes} style={{backgroundColor: theme.bg.primary}}>
-        <GlobalStyle/>
         {props.preBodyComponents}
         <div
           key={`body`}

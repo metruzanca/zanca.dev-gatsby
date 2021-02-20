@@ -14,56 +14,68 @@ export const Highlight = styled.span`
   color:${theme.fg.accent};
 `
 
-export const Center = styled.div`
+/**
+ * Converts Hex to Hex + Alpha channel
+ * @param hex Hex value
+ * @param percent Percentage value in the format of 0-1 akin to rgba's last value
+ */
+export function hexa(hex: string, percent: number){  
+  return `${hex}${Math.floor((255 * percent)).toString(16)}`
+}
+
+export const flexCenter = css`
   display: flex;
   justify-content: center;
   align-self: center;
 `
 
-// Selectors like :root don't seem to work.
-// Might be a styled issue or a gatsby issue 
-// const DarkScrollBar = css`
-//   /* Firefox */
-//   :root {
-//     scrollbar-color: #5a5e80 #1b1d2c;
-//   }
+export const CenterDiv = styled.div`
+  ${flexCenter}
+`
+
+// TODO Make use of this and standardize / put in namespace/class
+export const bigButton = (color: string) => css`
+  color: ${color};
+  &:visited { color: ${color}; }
+  font-size: ${theme.font.Size_0};
+  font-family: ${theme.font.mono};
+  line-height: ${theme.lineHeight_none};
+  text-decoration: none;
   
-//   /* Chrome */
-//   ::-webkit-scrollbar {
-//     width: 8px;
-//   }
-
-//   ::-webkit-scrollbar-track {
-//     background-color: #1b1d2c;
-//   }
-
-//   ::-webkit-scrollbar-thumb {
-//     border-radius: 10px;
-//     background-color: #5a5e80;
-//   }
-// `
+  background-color: transparent;
+  border: 1px solid ${color};
+  border-radius: 4px;
+  padding: 1.25rem 1.75rem;
+  
+  cursor: pointer;
+  
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &:hover, &:focus, &:active {
+    background-color: ${hexa(color, 0.1)};
+  }
+`
 
 const Headings = css`
   h1, h2, h3, h4, h5, h6 {
     font-family: ${theme.font.Heading};
     margin-top: ${theme.spacing_12};
     margin-bottom: ${theme.spacing_6};
-    line-height: var(--lineHeight-tight);
+    line-height: ${theme.lineHeight_tight};
     letter-spacing: -0.025em;
   }
 
   h2, h3, h4, h5, h6 {
-    font-weight: var(--fontWeight-bold);
-    color: var(--color-heading);
+    font-weight: ${theme.font.Weight_bold};
+    color: ${theme.fg.primary};
   }
 
   h1 {
-    font-weight: var(--fontWeight-black);
+    font-weight: ${theme.font.Weight_black};
     font-size: ${theme.font.Size_6};
-    /* color: var(--color-heading-black); */
+    color: ${theme.fg.primary};
   }
 
-  h1 a:visited { color: var(--color-text); }
+  h1 a:visited { color: ${theme.fg.primary}; }
 
   h2 { font-size: ${theme.font.Size_5}; }
   h3 { font-size: ${theme.font.Size_4}; }
@@ -83,26 +95,26 @@ const HtmlElements = css`
   }
 
   html {
-    line-height: var(--lineHeight-normal);
-    font-size: var(--fontSize-root);
+    line-height: ${theme.lineHeight_normal};
+    font-size: ${theme.font.Size_root};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    font-family: var(--font-body);
-    font-size: var(--fontSize-1);
-    color: var(--color-text);
+    font-family: ${theme.font.body};
+    font-size: ${theme.font.Size_1};
+    color: ${theme.fg.primary};
   }
 
   footer {
-    padding: var(--spacing-6) var(--spacing-0);
+    padding: ${theme.spacing_6} ${theme.spacing_0};
   }
 
   /* Take from footer styles */
   /* TODO remove from footer? */
   hr {
-    background: var(--color-accent);
+    background: ${theme.fg.primary};
     height: 1px;
     border: 0;
   }
@@ -110,73 +122,67 @@ const HtmlElements = css`
 
 const links = css`
   a {
-    color: var(--color-links);
+    color: ${theme.fg.links};
   }
 
   a:visited {
-    color: var(--color-links-visited);
+    color: ${theme.fg.linksVisited};
   }
 
   a:hover, a:focus {
     text-decoration: none;
   }
 `
-
-export const GlobalStyle = createGlobalStyle`
-  ${Headings}
-`
-
-export const BlogProse = createGlobalStyle`
-  /* Prose */
-
+// TODO move this to just the blog section?
+const BlogProse = css`
   p {
-    line-height: var(--lineHeight-relaxed);
+    line-height: ${theme.lineHeight_relaxed};
     --baseline-multiplier: 0.179;
     --x-height-multiplier: 0.35;
-    margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
-    padding: var(--spacing-0);
+    margin: ${theme.spacing_0} ${theme.spacing_0} ${theme.spacing_8} ${theme.spacing_0};
+    padding: ${theme.spacing_0};
   }
 
   ul, ol {
-    margin-left: var(--spacing-0);
-    margin-right: var(--spacing-0);
-    padding: var(--spacing-0);
-    margin-bottom: var(--spacing-8);
+    margin-left: ${theme.spacing_0}; 
+    margin-right: ${theme.spacing_0};
+    padding: ${theme.spacing_0};
+    margin-bottom: ${theme.spacing_8};
     list-style-position: outside;
     list-style-image: none;
   }
 
   ul li, ol li {
-    padding-left: var(--spacing-0);
-    margin-bottom: calc(var(--spacing-8) / 2);
+    padding-left: ${theme.spacing_0};
+    margin-bottom: calc(${theme.spacing_8} / 2);
   }
 
   li > p {
-    margin-bottom: calc(var(--spacing-8) / 2);
+    margin-bottom: calc(${theme.spacing_8} / 2);
   }
 
   li *:last-child {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: ${theme.spacing_0};
   }
 
   li > ul {
-    margin-left: var(--spacing-8);
-    margin-top: calc(var(--spacing-8) / 2);
+    margin-left: ${theme.spacing_8};
+    margin-top: calc(${theme.spacing_8} / 2);
   }
 
   blockquote {
-    color: var(--color-text-light);
-    margin-left: calc(-1 * var(--spacing-6));
-    margin-right: var(--spacing-8);
-    padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-6);
-    border-left: var(--spacing-1) solid var(--color-links);
-    font-size: var(--fontSize-2);
+    color: ${theme.fg.primary};
+    margin-left: calc(-1 * ${theme.spacing_6});
+    margin-right: ${theme.spacing_8};
+    padding: ${theme.spacing_0} ${theme.spacing_0} ${theme.spacing_0} ${theme.spacing_6};
+    border-left: ${theme.spacing_1} solid ${theme.fg.links};
+    font-size: ${theme.font.Size_2};
     font-style: italic;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: ${theme.spacing_8};
   }
 
   blockquote > :last-child {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: ${theme.spacing_0};
   }
 
   blockquote > ul, blockquote > ol {
@@ -185,76 +191,89 @@ export const BlogProse = createGlobalStyle`
 
   table {
     width: 100%;
-    margin-bottom: var(--spacing-8);
+    margin-bottom: ${theme.spacing_8};
     border-collapse: collapse;
     border-spacing: 0.25rem;
   }
 
   table thead tr th {
-    border-bottom: 1px solid var(--color-accent);
+    border-bottom: 1px solid ${theme.fg.accent};
   }
 
   /* Custom classes */
   /* TODO MOVE THIS  TO POST.TSX */
   .post-list-item {
-    margin-bottom: var(--spacing-8);
-    margin-top: var(--spacing-8);
+    margin-bottom: ${theme.spacing_8};
+    margin-top: ${theme.spacing_8};
   }
 
   .post-list-item p {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: ${theme.spacing_0};
   }
 
   .post-list-item h2 {
-    font-size: var(--fontSize-4);
-    color: var(--color-links);
-    margin-bottom: var(--spacing-2);
-    margin-top: var(--spacing-0);
+    font-size: ${theme.font.Size_4};
+    color: ${theme.fg.links};
+    margin-bottom: ${theme.spacing_2};
+    margin-top: ${theme.spacing_0};
   }
 
   .post-list-item header {
-    margin-bottom: var(--spacing-4);
+    margin-bottom: ${theme.spacing_4};
   }
 
   .bio {
     display: flex;
-    margin-bottom: var(--spacing-16);
+    margin-bottom: ${theme.spacing_16};
   }
 
   .bio p {
-    margin-bottom: var(--spacing-0);
+    margin-bottom: ${theme.spacing_0};
   }
 
   .bio-avatar {
-    margin-right: var(--spacing-4);
-    margin-bottom: var(--spacing-0);
+    margin-right: ${theme.spacing_4};
+    margin-bottom: ${theme.spacing_0};
     min-width: 50px;
     border-radius: 100%;
   }
 
   .blog-post header h1 {
-    margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
+    margin: ${theme.spacing_0} ${theme.spacing_0} ${theme.spacing_4} ${theme.spacing_0};
   }
 
   .blog-post header p {
-    font-size: var(--fontSize-2);
-    font-family: var(--font-heading);
+    font-size: ${theme.font.Size_2};
+    font-family: ${theme.font.Heading};
   }
 
   .blog-post-nav ul {
-    margin: var(--spacing-0);
+    margin: ${theme.spacing_0};
   }
 
   /* Media queries */
 
   @media (max-width: 42rem) {
     blockquote {
-      padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
-      margin-left: var(--spacing-0);
+      padding: ${theme.spacing_0} ${theme.spacing_0} ${theme.spacing_0} ${theme.spacing_4};
+      margin-left: ${theme.spacing_0};
     }
     ul,
     ol {
       list-style-position: inside;
     }
   }
+`
+
+export const BlogGlobalStyle = createGlobalStyle`
+  ${Headings}
+  ${HtmlElements}
+  ${BlogProse}
+  ${links}
+`
+
+export const GlobalStyle = createGlobalStyle`
+  ${Headings}
+  ${HtmlElements}
+  ${links}
 `

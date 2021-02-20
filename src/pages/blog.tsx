@@ -5,7 +5,6 @@ import styled from "styled-components";
 import Layout from "../components/BlogLayout"
 import SEO from "../components/seo"
 import Bio from "../components/bio"
-import Navbar from "../components/Navbar"
 
 const ReadingTime = styled.small`
   margin-left: 3em;

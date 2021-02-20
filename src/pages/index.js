@@ -11,6 +11,8 @@ import Contact from "../components/Contact"
 import Experience from "../components/WorkExperience"
 import Footer from "../components/Footer"
 
+import { GlobalStyle } from '../style'
+
 import { jump, isDevelopment } from '../utils'
 
 const experience = [
@@ -167,6 +169,7 @@ const LandingPage = ({ location }) => {
 
   return (
     <Fragment>
+      <GlobalStyle/>
       <SEO title="Zanca.Dev - Samuel's Blog and Portfolio" />
       <SpaNav
         scrollableSections={scrollableSections}

@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@types/jump.js": "^1.0.3",
+    "@types/react-helmet": "^6.1.0",
     "@types/styled-components": "^5.1.7",
     "prettier": "2.2.1"
   },

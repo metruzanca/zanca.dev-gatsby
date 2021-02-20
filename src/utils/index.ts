@@ -6,3 +6,5 @@ export function jump(path: string, callback?: () => void) {
 }
 
 export const isDevelopment = process.env.NODE_ENV === "development"
+
+export {default as config} from './config'

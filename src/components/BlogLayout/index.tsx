@@ -1,7 +1,6 @@
 import React from "react"
-import { Link } from "gatsby"
 
-import {Highlight} from '../../style'
+import {BlogGlobalStyle} from '../../style'
 
 import {ReadingDiv} from './style'
 
@@ -40,6 +39,7 @@ const BlogLayout = ({ location, title, children }) => {
   
   return (
     <>
+      <BlogGlobalStyle/>
       <Navigation
         scrollableSections={scrollableSections}
         additionalSections={additionalSections}
