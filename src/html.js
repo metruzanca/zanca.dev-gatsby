@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import {theme, GlobalStyle} from './style'
+import {theme} from './style'
 
 export default function HTML(props) {
   return (

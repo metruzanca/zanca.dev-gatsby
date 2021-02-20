@@ -7,7 +7,8 @@
 // however, this component also has InnorBox which is a classic hamburger menu design.
 
 import React, { useState, useRef, useEffect } from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
+
 import {
   Wrapper,
   HamburgerButton,
@@ -16,6 +17,7 @@ import {
   BrittanyChiangInnerBox,
   ResumeLink,
   Nav,
+  Link,
 } from "./styles"
 
 import { useOnClickOutside } from "../../hooks"
@@ -65,9 +67,9 @@ export const Menu = () => {
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper menuOpen={menuOpen}>
       <Helmet>
-        <body className={menuOpen ? 'blur' : ''} />
+        <body className={menuOpen ? 'blur' : ''}/>
       </Helmet>
 
       <div ref={modalRef}>
@@ -79,18 +81,15 @@ export const Menu = () => {
 
         <Sidebar menuOpen={menuOpen} aria-hidden={!menuOpen} tabIndex={menuOpen ? 1 : -1}>
           <Nav ref={navRef}>
-            <ol>
-              {navigation.map(({ path, name }, i) => (
-                <li key={i}>
-                  <Link to={path}>{name}</Link>
-                </li>
-              ))}
-            </ol>
+            {navigation.map(({ path, name }, i) => (
+              <div key={i}>
+                <Link to={path}>{name}</Link>
+              </div>
+            ))}
 
-            <ResumeLink href="/resume.pdf">
+            <ResumeLink to="/resume.pdf">
               Resume
             </ResumeLink>
-
           </Nav>
         </Sidebar>
       </div>
