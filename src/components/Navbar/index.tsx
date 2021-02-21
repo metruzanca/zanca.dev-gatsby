@@ -1,23 +1,17 @@
 import React from "react"
 
-import {Highlight} from '../../style'
-import SocialIcons from './SocialIcon'
+import {Breakpoints, Highlight, up} from '../../style'
 import {
   NavWrapper,
   NavLogo,
   Nav,
   Spacer,
-  NavSocial,
   Ul,
   LinkLi,
-  // NavLink,
-  // HighlightedNavLink,
   AnchorLink,
   HighlightedAnchorLink,
-  MenuButton,
-  MenuIcon,
-  Hamburger,
 } from './styles'
+import { Menu } from '../Menu'
 
 // TODO itemProp for Link and span
 // Are they just an accessibility thing or are they specific to Gatsby?
@@ -47,16 +41,13 @@ const Navigation: React.FC<Props> = ({
   scrollToSection,
 }) => {
   const CSRLandingPage = typeof window !== `undefined` && window.isBrowserWithJavascript
-
+  console.log(up(Breakpoints.small));
+  
   return (
     <NavWrapper>
       <NavLogo>
         <AnchorLink href="/"><Highlight>{'Z'}</Highlight>{'anca.Dev'}</AnchorLink>
       </NavLogo>
-      {/* <MenuButton type="checkbox" id="hamburger-btn"/>
-      <MenuIcon htmlFor="hamburger-btn">
-        <Hamburger/>
-      </MenuIcon> */}
       <Nav>
         <Ul>
           {CSRLandingPage && scrollToSection !== undefined ? 
@@ -103,9 +94,7 @@ const Navigation: React.FC<Props> = ({
           ))}
         </Ul>
       </Nav>
-      <NavSocial>
-          <SocialIcons/>
-      </NavSocial>
+      <Menu/>
     </NavWrapper>
   )
 }

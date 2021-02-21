@@ -1,8 +1,6 @@
 import styled, {css} from 'styled-components'
 
-import {theme, Link, HeadingCSS, darken, Breakpoints, up} from '../../style'
-
-// Logo(zancadev)      Nav[Home, Projects, Services, About, Contact, Blog]     Social[Linkedin, GitHub, Resume]
+import {theme, Link, HeadingCSS, darken, Breakpoints, down, up} from '../../style'
 
 export const NavWrapper = styled.header`
   display: inline;
@@ -16,6 +14,12 @@ export const NavWrapper = styled.header`
   position: sticky;
   top:0;
   z-index:100;
+
+  ${down(Breakpoints.small)} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `
 
 export const NavLogo = styled.span`
@@ -32,16 +36,21 @@ export const Nav = styled.nav`
   ${HeadingCSS}
   grid-column: 2;
 `
+
 export const NavSocial = styled.span`
   grid-column: 3;
   min-width: 120px;
 `
 
 export const Ul = styled.ul`
-  display: inline;
   text-decoration: none;
   padding: 0;
   margin: 0;
+
+  display: none;
+  ${up(Breakpoints.small)} {
+    display: inline;
+  }
 `
 
 export const LinkLi = styled.li`
@@ -91,58 +100,3 @@ export const Spacer = styled.li`
   padding: 0 20px 0 0;
   color: ${theme.fg.blueishGray};
 `
-
-export const MenuIcon = styled.label`
-
-`
-
-export const Hamburger = styled.span`
-  background: #333;
-  display: block;
-  height: 2px;
-  position: relative;
-  transition: background-color .2s ease-out;
-  width: 18px;
-
-  &:before, &:after {
-    background: red;
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    transition: all .2s ease-out;
-    width: 100%;
-  }
-
-  ${up(Breakpoints.small)} {
-    display: none;
-  }
-`
-
-export const MenuButton = styled.input`
-  display: none;
-
-  &:checked ~ ${MenuIcon} ${Hamburger} {
-    background-color: transparent;
-  }
-
-  &:checked ~ ${MenuIcon} ${Hamburger}:before {
-    transform: rotate(-45deg);
-    top:0;
-  }
-
-  &:checked ~ ${MenuIcon} ${Hamburger}:after {
-    transform: rotate(45deg);
-    top:0;
-  }
-`
-
-
-
-/*
-  <MenuButton/>
-  <MenuIcon>
-    <Hamburger></Hamburger>
-  </MenuIcon>
-
-*/

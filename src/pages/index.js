@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
-import SpaNav from "../components/Navbar"
+import Navigation from "../components/Navbar"
 
 import Hero from "../components/Hero"
 import Projects from "../components/Projects"
@@ -14,6 +14,7 @@ import Footer from "../components/Footer"
 import { GlobalStyle } from '../style'
 
 import { jump, isDevelopment } from '../utils'
+import { useDidMount } from '../hooks'
 
 const experience = [
   {
@@ -157,24 +158,21 @@ const LandingPage = ({ location }) => {
   // TODO Change how this is passed to Hero
   scrollableSections[0].props.scroll = () => scrollToSection(1, "#experience")
 
-  // I want this to run only once and after the very first render of this page.
-  /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
+  useDidMount(() => {
     if(location.hash){
       const key = scrollableSections.findIndex( route => route.path === location.hash)
       scrollToSection(key, location.hash)
     }
-  }, [])
-  /* eslint-enable */
+    return null
+  })
 
   return (
     <Fragment>
       <GlobalStyle/>
       <SEO title="Zanca.Dev - Samuel's Blog and Portfolio" />
-      <SpaNav
+      <Navigation
         scrollableSections={scrollableSections}
         additionalSections={additionalSections}
-        setHighlight={setHighlight}
         highlight={highlight}
         scrollToSection={scrollToSection}
       />

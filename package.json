@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "zanca.dev",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
@@ -52,15 +52,15 @@
     "@types/styled-components": "^5.1.7",
     "prettier": "2.2.1"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "zanca.dev",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/metruzanca/zanca.dev.git"
   },
   "scripts": {
     "build": "gatsby build",

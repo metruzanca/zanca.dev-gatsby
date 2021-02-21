@@ -1,14 +1,14 @@
 // Based on https://medium.flatstack.com/how-to-make-media-queries-strings-in-styled-components-shorter-and-more-reliable-c78bcce13fc8
 
 export enum Breakpoints {
-  small = '688px',
+  small = '768px',
   medium = '992px',
   large = '1312px',
 }
 
 export function up(breakpoint: Breakpoints, vertical = false) {
   const direction = vertical ? 'height' : 'width'
-  return `@media (min-${direction}: calc(${breakpoint} + 1px))`
+  return `@media (min-${direction}: ${breakpoint})`
 }
 
 export function down(breakpoint: Breakpoints, vertical = false) {

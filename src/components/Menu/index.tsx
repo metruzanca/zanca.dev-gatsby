@@ -83,7 +83,7 @@ export const Menu = () => {
           <Nav ref={navRef}>
             {navigation.map(({ path, name }, i) => (
               <div key={i}>
-                <Link to={path}>{name}</Link>
+                <Link to={path} onClick={() => setMenuOpen(false)}>{name}</Link>
               </div>
             ))}
 
