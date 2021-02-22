@@ -1,11 +1,10 @@
 import React from "react"
-import { Link } from "gatsby";
 
 import {Highlight} from '../../style'
 import {Observed} from "../ObservedSection"
-import ScrollIndicator from "../ScrollIndicator"
 
 import {HeroSection, HeroHeading, HeroParagraph, CallToAction} from './styles'
+import ScrollIndicator from "../ScrollIndicator";
 
 
 interface Props {

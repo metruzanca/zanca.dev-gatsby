@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {HeadingCSS, theme, darken} from '../../style'
+import {HeadingCSS, theme} from '../../style'
 
 export const HeroSection = styled.section`
   height: 80vh;
@@ -41,6 +41,6 @@ export const CallToAction = styled.button`
   border-radius: ${theme.ctaRadius};
   background-color: ${theme.fg.links};
   &:hover{
-    ${darken(.2)}
+    background-color: #586fd5;
   }
 `

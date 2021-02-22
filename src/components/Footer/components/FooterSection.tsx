@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { darkenHex, theme } from '../../../style'
+import { hexa, theme } from '../../../style'
 
 const FooterSection: React.FC<{header: string}> = ({
   header,
@@ -30,7 +30,7 @@ const H5 = styled.h5`
     content: '';
     width: 100%;
     padding-top: .6em;
-    border-bottom: 1px solid ${darkenHex(theme.fg.blueishGray, .4)};
+    border-bottom: 1px solid ${hexa(theme.fg.blueishGray, .4)};
   }
 `
 

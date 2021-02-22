@@ -1,14 +1,13 @@
 import styled, {css} from 'styled-components'
 
-import {theme, Link, HeadingCSS, darken, Breakpoints, down, up} from '../../style'
+import {theme, Link, HeadingCSS, Breakpoints, down, up} from '../../style'
 
 export const NavWrapper = styled.header`
   display: inline;
   display: grid;
   grid-template-columns: 2fr 6fr 2fr;
   height: ${theme.nav.height}px;
-  background-color: ${theme.bg.primary};
-  ${darken(.2)}
+  background-color: ${theme.bg.thirdiary};
   //TODO make this centering MUCH better
   padding: 25px 20px;
   position: sticky;

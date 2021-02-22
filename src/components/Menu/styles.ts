@@ -12,8 +12,9 @@ type MenuOpen = {menuOpen:boolean}
 
 export const Wrapper = styled.div<MenuOpen>`
   display: none;
-
+  
   @media (max-width: 768px) {
+    ${p => !p.menuOpen && 'pointer-events: none;'}
     display: block;
     
     &:before {
@@ -36,6 +37,8 @@ export const HamburgerButton = styled.button`
   display: none;
 
   @media (max-width: 768px) {
+    pointer-events: all;
+    cursor: pointer;
     /* Button reset */
     border: 0;
     background-color: transparent;
@@ -153,10 +156,7 @@ export const Nav = styled.nav`
 
   & div {
     width: 100%;
-    margin: 0 auto 3em;
-    @media (max-width: 600px) {
-      margin: 0 auto 1.5em;
-    }
+    margin: 0 auto 1.5em;
   }
 `
 

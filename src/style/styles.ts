@@ -1,5 +1,6 @@
 import { Link as GatsbyLink} from 'gatsby'
 import styled, { createGlobalStyle, css } from 'styled-components'
+import { Breakpoints, down } from './responsive'
 
 import theme from './theme' 
 
@@ -276,4 +277,15 @@ export const GlobalStyle = createGlobalStyle`
   ${Headings}
   ${HtmlElements}
   ${links}
+
+  ${down(Breakpoints.small)} {
+    #gatsby-focus-wrapper {
+      overflow: hidden;
+    }
+  }
+`
+// TODO get rid of this
+export const HeadingCSS = css`
+  font-family: Montserrat;
+  font-weight: 700;
 `

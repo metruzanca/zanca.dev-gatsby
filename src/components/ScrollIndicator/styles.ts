@@ -2,7 +2,7 @@
 // Reimplemented based on https://codepen.io/ashbryant/pen/JCHar
 
 import styled, { keyframes } from "styled-components";
-import { theme } from "../../style";
+import { down, theme, Breakpoints } from "../../style";
 
 const scroll = keyframes`
   0% {
@@ -32,6 +32,10 @@ export const MouseScroll = styled.a`
   margin-top: 10%;
   text-decoration: none;
   overflow: hidden;
+  
+  ${down(Breakpoints.small)} {
+    display: none
+  }
 `
 
 export const Mouse = styled.span`
