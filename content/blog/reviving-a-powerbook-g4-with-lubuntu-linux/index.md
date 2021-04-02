@@ -6,7 +6,7 @@ tags:
   - mac
   - linux
 ---
-1. ![powerbook g4](https://upload.wikimedia.org/wikipedia/commons/f/f7/PowerBook_redjar.jpg)
+![](powerbook_redjar.jpg)
 
 ## Introduction
 
@@ -64,4 +64,4 @@ Following the install wizard should be easy enough.
 
 And we're done! Enjoy your revived system.
 
-> _Though if your G4 was like ours, 512mb of ram is going to be hard to work with, so be careful and setup a swap file or be prepared to reboot regularly when your system gets stuck when you run out of ram..._
+> *Though if your G4 was like ours, 512mb of ram is going to be hard to work with, so be careful and setup a swap file or be prepared to reboot regularly when your system gets stuck when you run out of ram...*
