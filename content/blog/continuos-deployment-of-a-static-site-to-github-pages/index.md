@@ -70,7 +70,7 @@ ssh-keygen -t rsa -b 4096 -C "$(git config user.email)" -f gh-pages -N ""
 After generating the keys go over to your repository settings and add the following.
 
 - In **Deploy Keys**, add your public key with the Allow write access.
-- In **Secrets**,  add your private key as ACTIONS_DEPLOY_KEY. (same name used in the workflow)
+- In **Secrets**,  add your private key as ACTIONS\_DEPLOY\_KEY. (same name used in the workflow)
 
 ## And We're Done!
 
