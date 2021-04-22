@@ -34,7 +34,7 @@ But first TL;DR: We're using [Zip Release](https://github.com/marketplace/action
 
 And heres the code:
 
-```
+```yml
 name: Release
 on:
   push:
