@@ -1,13 +1,17 @@
 ---
-title: Github Actions Continous Deployment to Release
+title: How to Automate Github Releases with Github Actions (Continuous Deployment)
 date: 2021-04-21T00:21:18.749Z
-description: Create automatic releases on Github with a Github Actions Pipeline
+description: How to Automate Github Releases with a Github Actions pipeline for
+  Continuous Deployment
 tags:
   - TIL
   - git
   - CI/CD
   - github
   - github-actions
+  - CI
+  - CD
+  - Continuous Deployment
 ---
 I've really fallen in love with github actions. They make allow you to play around with continous integration and enable so much automation for your personal projects.
 
