@@ -1,3 +1,5 @@
+import styled, { createGlobalStyle } from "styled-components"
+
 const maxWidth = {
   "none": "none",
   "xs": "20rem",
@@ -144,12 +146,12 @@ const flat = {
 
 // These two functions will be used along with flat 
 
-function createSheet(data: Object){
+export function createSheet(data: Object){
   return Object.entries(data)
     .map(([k,v]) => `--${k}: ${v};\n`)
     .join("")
 }
 
-function cssVar(key: keyof typeof flat){
+export function cssVar(key: keyof typeof flat){
   return `var(--${key})`
 }
